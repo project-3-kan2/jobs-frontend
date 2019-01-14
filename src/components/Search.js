@@ -1,4 +1,5 @@
 import React , { Component } from 'react';
+import SearchResult from './SearchResult'
 
 class Search extends Component {
     constructor() {
@@ -77,14 +78,14 @@ class Search extends Component {
 
         //to be edit ##########################
         const updatedResults = this.state.results.concat(parsedListings);
-
+        console.log('updatedResults ', updatedResults)
         this.setState({
             results: updatedResults
         })
     }
 
     renderResults() {
-        this.state.results.map((job, index) => {
+        return this.state.results.map((job, index) => {
             return <SearchResult key={index} job={job}/>
         })
     }
@@ -93,8 +94,8 @@ class Search extends Component {
         return(
             <div>
                 <div className="login-buttons">
-                    <a onClick={}>Register</a>
-                    <a onClick={}></a>
+                    <p>Register</p>
+                    <p></p>
                 </div>
                 <div className="search-container">
                     <form className="search-form" onSubmit={this.handleSumbit.bind(this)}>
