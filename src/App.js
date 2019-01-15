@@ -3,6 +3,13 @@ import './App.css';
 import Search from './components/Search';
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state ={
+      username: ''
+    }
+  }
+
   render() {
     return (
       <div className="">
