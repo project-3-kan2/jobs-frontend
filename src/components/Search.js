@@ -7,7 +7,7 @@ class Search extends Component {
         super();
         this.state = {
             searchTerm: '',
-            results: [],
+            // results: [],
             selectedJob: null
         }
     }
@@ -63,10 +63,11 @@ class Search extends Component {
             }
         })
         console.log('handleGithubData', parsedData);
-
-        this.setState({
-            results: parsedData
-        })
+        this.props.handleResults(parsedData)
+        
+        // this.setState({
+        //     results: parsedData
+        // })
     }
 
     handleAuthenticData(listings) {
@@ -83,16 +84,17 @@ class Search extends Component {
         })
         console.log('handleAuthenticData', parsedListings);
 
-        const updatedResults = this.state.results.concat(parsedListings);
-        console.log('updatedResults ', updatedResults)
-        this.setState({
-            results: updatedResults
-        })
+        const updatedResults = this.props.results.concat(parsedListings);
+        this.props.handleResults(updatedResults);       
+        //  console.log('updatedResults ', updatedResults)
+        // this.setState({
+        //     results: updatedResults
+        // })
     }
 
     renderResults() {
-        return this.state.results.map((job, index) => {
-            return <SearchResult key={index} job={job} setSelectedJob={this.setSelectedJob.bind(this)}/>
+        return this.props.results.map((job, index) => {
+            return <SearchResult handleSaveJob={this.props.handleSaveJob} key={index} job={job} setSelectedJob={this.setSelectedJob.bind(this)}/>
         })
     }
 

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import Search from './components/Search';
 
+const API_URL = 'http://localhost:3000/';
+
 class App extends Component {
   constructor() {
     super();
@@ -9,7 +11,8 @@ class App extends Component {
       username: '',
       activeUser: false,
       loginForm: false,
-      userInfo: undefined
+      userInfo: undefined,
+      results: []
     }
   }
 
@@ -29,7 +32,7 @@ class App extends Component {
   handleSubmit(event) {
     event.preventDefault();
 
-    fetch(`http://localhost:3000/user/${this.state.username}`)
+    fetch(`${API_URL}user/${this.state.username}`)
     .then( response => response.json() )
     .then( data => {
       console.log(data);
@@ -45,11 +48,18 @@ class App extends Component {
     console.log(this.state.userInfo);
   }
 
-  handleSaveJob() {
+  handleSaveJob(job) {
+    console.log('$$###################', job)
     if(this.state.userInfo === undefined) {
-      alert("Plase Login or Register")
-    } else {
-      
+      alert("Plase Login or Register to save and apply to job")
+    } else { 
+      const index = this.state.results.indexOf(job); 
+      console.log("index",index);
+      // const {results} = this.state; 
+      // results.slice(index, 1); 
+      // console.log('## RRR', results.slice(index, 1))
+      const updatedResult = this.state.results.filter((el, i) => i !== index )
+      this.setState({ results: updatedResult })
     }
   }
 
@@ -66,6 +76,13 @@ class App extends Component {
     )
   }
 
+  handleResults(dataResult) {
+    this.setState({
+      results: dataResult
+    })
+    console.log("results %%%%%",this.state.results)
+  }
+
   render() {
     return (
       <div className="">
@@ -76,7 +93,7 @@ class App extends Component {
         {this.state.loginForm ? this.renderLoginForm() : ''}
 
         <h1>Search For Job</h1>
-        <Search userInfo={this.state.userInfo}/>
+        <Search handleSaveJob={this.handleSaveJob.bind(this)} handleResults={this.handleResults.bind(this)} results={this.state.results} userInfo={this.state.userInfo}/>
       </div>
     );
   }

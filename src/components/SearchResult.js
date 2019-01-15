@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SearchResult = (props) => {    
+const SearchResult = (props) => {  
     return(
         <div className="search-resualt">
             <div>
@@ -8,7 +8,7 @@ const SearchResult = (props) => {
                 <p>Company: {props.job.company}</p>
                 <p>Location: {props.job.location}</p>
                 <img src={props.job.company_logo} alt={props.job.company} className="company-logo"/>
-                <button >Save Job</button>
+                <button onClick={() => props.handleSaveJob(props.job)}>Save Job</button>
             </div>  
         </div>
     )
