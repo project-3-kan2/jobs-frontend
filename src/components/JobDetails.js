@@ -15,7 +15,7 @@ const JobDetails = props => {
       </div> */}
       <div className="job-details">
         <div>
-        <img src={props.selectedJob.company_logo} alt={props.selectedJob.company}/>
+        <img className="company-logo" src={props.selectedJob.company_logo} alt={props.selectedJob.company}/>
           <h2>{props.selectedJob.title}</h2>
           <h4>Company: {props.selectedJob.company}</h4>
           <h4>Location: {props.selectedJob.location}</h4>
@@ -23,7 +23,8 @@ const JobDetails = props => {
         </div>
         <div>
           <div className="job-buttons">
-          <button onClick={() => window.open(`${props.selectedJob.url}`, "_blank")}>Apply</button>
+          {props.userInfo === undefined? '' :
+          <button onClick={() => window.open(`${props.selectedJob.url}`, "_blank")}>Apply</button>}
           <button>Save</button>
             {/* <button onClick={() => { props.handelClicked() }}>Save</button> */}
           </div>

@@ -115,7 +115,7 @@ class Search extends Component {
                         <input type="text" onChange={this.handleChange.bind(this)}/>
                         <button><img src="https://i.imgur.com/WX7bym4.png" alt="search"/></button>
                     </form>
-                    {this.state.selectedJob === null ? this.renderResults() : <JobDetails selectedJob={this.state.selectedJob}/> }
+                    {this.state.selectedJob === null ? this.renderResults() : <JobDetails userInfo={this.props.userInfo} selectedJob={this.state.selectedJob}/> }
                 </div>
             </div>
         )
