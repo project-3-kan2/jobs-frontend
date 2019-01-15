@@ -64,19 +64,20 @@ class Search extends Component {
     }
 
     handleAuthenticData(listings) {
+        const img = 'https://image.freepik.com/free-icon/blocking-symbol_318-40339.jpg'
         const parsedListings = listings.map ( listing => {
             return{
                 title: listing.title,
                 description: listing.description.replace(/<\/?[^>]+(>|$)/g, ""),
-                location: listing.company.location.name,
+                location: listing.company.location === undefined ? "unknown" : listing.company.location.name ,
                 company: listing.company.name,
-                company_logo: listing.company.logo,
+                company_logo: img,
                 url: listing.company.apply_url
+                //listing.company.logo,
             }
         })
         console.log('handleAuthenticData', parsedListings);
 
-        //to be edit ##########################
         const updatedResults = this.state.results.concat(parsedListings);
         console.log('updatedResults ', updatedResults)
         this.setState({
