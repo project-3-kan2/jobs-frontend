@@ -5,7 +5,7 @@ const SearchResult = (props) => {
         <div className="search-resualt">
             <div>
                 <h2>{props.job.title}</h2>
-                <p>Company{props.job.company}</p>
+                <p>Company: {props.job.company}</p>
                 <p>Location: {props.job.location}</p>
                 <img src={props.job.company_logo} alt={props.job.company} className="company-logo"/>
                 <button>Save Job</button>
