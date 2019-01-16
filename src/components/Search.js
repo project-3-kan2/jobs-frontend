@@ -56,10 +56,10 @@ class Search extends Component {
             return{
                 title: job.title,
                 description: job.description.replace(/<\/?[^>]+(>|$)/g, ""),
-                location: job.location,
-                company: job.company,
+                job_url: job.url,
+                job_location: job.location,
                 company_logo: job.company_logo === null ? img : job.company_logo,
-                url: job.url
+                company_name: job.company
             }
         })
         console.log('handleGithubData', parsedData);
@@ -76,10 +76,10 @@ class Search extends Component {
             return{
                 title: listing.title,
                 description: listing.description.replace(/<\/?[^>]+(>|$)/g, ""),
-                location: listing.company.location === undefined ? "unknown" : listing.company.location.name ,
-                company: listing.company.name,
+                job_url: listing.company.apply_url,
+                job_location: listing.company.location === undefined ? "unknown" : listing.company.location.name ,
                 company_logo: img,
-                url: listing.company.apply_url
+                company_name: listing.company.name
             }
         })
         console.log('handleAuthenticData', parsedListings);

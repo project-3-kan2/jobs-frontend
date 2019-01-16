@@ -49,18 +49,50 @@ class App extends Component {
   }
 
   handleSaveJob(job) {
-    console.log('$$###################', job)
     if(this.state.userInfo === undefined) {
       alert("Plase Login or Register to save and apply to job")
     } else { 
-      const index = this.state.results.indexOf(job); 
+      this.insertSavedJob(job)
+      // const index = this.state.results.indexOf(job); 
+      // console.log("index",index);
+      // // const {results} = this.state; 
+      // // results.slice(index, 1); 
+      // // console.log('## RRR', results.slice(index, 1))
+      // const updatedResult = this.state.results.filter((el, i) => i !== index )
+      // this.setState({ results: updatedResult })
+
+    }
+  }
+
+  //function to insert the saved job in the javed_job database table
+  insertSavedJob(savedJob) {
+    console.log('$$###################', savedJob)
+
+    const url = `${API_URL}job/`
+    savedJob.user_id = this.state.userInfo.id
+
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(savedJob)
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log('DATA')
+      console.log(data);
+      const index = this.state.results.indexOf(savedJob); 
       console.log("index",index);
       // const {results} = this.state; 
       // results.slice(index, 1); 
       // console.log('## RRR', results.slice(index, 1))
       const updatedResult = this.state.results.filter((el, i) => i !== index )
       this.setState({ results: updatedResult })
-    }
+    })
+    .catch(error => {
+      console.log(error);
+    })
   }
 
   //This function will render the log-in form it the login is true
