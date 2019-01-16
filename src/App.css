@@ -2,3 +2,12 @@
     width: 300px;
     height: 200px;
 }
+
+.job-info , .cursor{
+    cursor: pointer;
+}
+
+.nav-bar {
+    display: flex;
+    justify-content: space-around
+}
