@@ -26,8 +26,28 @@ class Search extends Component {
         this.setState({
             selectedJob: null
         })
+        const LookupIP = 'https://ipapi.co/json/';
+
         const url1 = `https://jobs.github.com/positions.json?description=${this.state.searchTerm}&search=node`
-        const url2 = `https://authenticjobs.com/api/?api_key=e2da8aacbfce53f1e1b9559409a51691&format=json&method=aj.jobs.search&keywords=${this.state.searchTerm}`
+        const url2 = `https://authenticjobs.com/api/?api_key=${process.env.Authentic_API}&format=json&method=aj.jobs.search&keywords=${this.state.searchTerm}`
+
+        fetch(LookupIP)
+        .then(data => {
+            console.log(data)
+            // currentIp = data.ip;
+            // console.log (currentIp);
+            fetch(`http://api.indeed.com/ads/apisearch?publisher=${process.env.indeed_API}&q=${this.state.searchTerm}&userip=${data.ip}&useragent=Mozilla/%2F4.0%28Firefox%29&v=2&format=json&limit=25`)
+            // note: if you want to specify saudi add  &l=Saudi+Arabia
+            .then(response => response.json())
+            .then(indeed =>{
+                this.handleIndeedData(indeed)
+            })
+            .catch(error => {
+                console.log('Search component handleSumbit of Indeed: ', error);
+            })
+
+        })
+        
 
         fetch(url1)
         .then(response => response.json())
@@ -90,6 +110,21 @@ class Search extends Component {
         // this.setState({
         //     results: updatedResults
         // })
+    }
+    handleIndeedData(indeed){
+        const img = 'https://image.freepik.com/free-icon/blocking-symbol_318-40339.jpg'
+        parsedIndeedData = data.map ( data => {
+            return {
+                title : results.jobtitle,
+                description: results.snippet,
+                job_url: results.url,
+                job_location: results.formattedLocationFull,
+                company_logo: img,
+                company_name: results.company
+            }
+        })
+        const updatedIndeedData = this.props.results.concat(parsedIndeedData);
+        this.props.handleResults(updatedIndeedData);
     }
 
     renderResults() {
