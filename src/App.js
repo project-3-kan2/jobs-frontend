@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import Search from './components/Search';
-import UserForm from './components/UserForm'
+import UserForm from './components/UserForm';
+import UserProfile from './components/UserProfile';
 
 const API_URL = 'http://localhost:3000/';
 
@@ -14,7 +15,8 @@ class App extends Component {
       loginForm: false,
       userInfo: undefined,
       results: [],
-      userForm: false
+      userForm: false,
+      showProfile: false
     }
   }
 
@@ -40,7 +42,9 @@ class App extends Component {
       .then(data => {
         console.log(data);
         this.setState({
-          userInfo: data
+          userInfo: data,
+          loginForm: false,
+          activeUser:true
         })
       })
       .catch(error => {
@@ -99,7 +103,8 @@ class App extends Component {
   }
 
   updateUserInfo(user) {
-    const url = `${API_URL}/user/${user.id}`
+    console.log("##", user);
+    const url = `${API_URL}user/${user.id}`
 
     fetch(url, {
       method: 'PUT',
@@ -118,7 +123,8 @@ class App extends Component {
   }
 
   createNewUser(user) {
-    const url = `${API_URL}/user`;
+    console.log('####################', user)
+    const url = `${API_URL}user`;
     fetch(url, {
       method: 'POST',
       headers: {
@@ -128,7 +134,10 @@ class App extends Component {
     })
       .then(response => response.json())
       .then(data => {
-        this.setState({ userInfo: data })
+        this.setState({ 
+          userInfo: data,
+          userForm: false
+         })
       })
   }
 
@@ -164,20 +173,50 @@ class App extends Component {
   }
 
   renderUserForm() {
-    return <UserForm activeUser={this.state.activeUser} handleFormSubmit={this.handleFormSubmit.bind(this)} handleRegister={this.handleRegister.bind(this)} />
+    return <UserForm userInfo={this.state.userInfo} handleFormSubmit={this.handleFormSubmit.bind(this)} handleRegister={this.handleRegister.bind(this)} />
+  }
+
+  renderUserProfile(){
+    return <UserProfile user={this.state.userInfo} handleRegister={this.handleRegister.bind(this)}/>
+  }
+
+  handleLogout() {
+    this.setState({
+      username: '',
+      activeUser: false,
+      userInfo: undefined,
+      results: [],
+      userProfile: false,
+      userForm: false
+    })
+  }
+
+  setUserProfile() {
+    this.setState({ userProfile: true})
+  }
+
+  renderNavButton() {
+    if(this.state.userInfo) {
+      return(<div>
+        <p className="cursor" onClick={() => this.setUserProfile()}>{this.state.userInfo.username}</p>
+        <p className="cursor" onClick={() => this.handleLogout()}>Logout</p>
+      </div>)
+    } else {
+      return( <div className="">
+          <p className="cursor" onClick={() => this.handleRegister()}>Register</p>
+          <p className="cursor" onClick={() => this.setLoginForm()}>Login</p>
+      </div>)
+    }
   }
 
   render() {
     return (
       <div className="">
-        <div className="">
-          <p className="cursor" onClick={() => this.handleRegister()}>Register</p>
-          <p className="cursor" onClick={() => this.setLoginForm()}>Login</p>
-        </div>
+        {this.renderNavButton()}
         {this.state.loginForm ? this.renderLoginForm() : ''}
         {this.state.userForm ? this.renderUserForm() : ''}
-        <h1>Search For Job</h1>
-        <Search handleSaveJob={this.handleSaveJob.bind(this)} handleResults={this.handleResults.bind(this)} results={this.state.results} userInfo={this.state.userInfo} />
+        {this.state.userProfile ? this.renderUserProfile() : 
+                                  <Search handleSaveJob={this.handleSaveJob.bind(this)} handleResults={this.handleResults.bind(this)} results={this.state.results} userInfo={this.state.userInfo} /> }
       </div>
     );
   }

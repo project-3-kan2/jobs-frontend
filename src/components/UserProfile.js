@@ -13,7 +13,7 @@ const UserProfile = (props) => {
         <div>
         <div className="editUserProfile">
 
-          <button>Edit</button>
+          <button onClick={() => props.handleRegister()}>Edit</button>
 
         </div>
       </div>

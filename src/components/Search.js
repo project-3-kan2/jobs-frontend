@@ -108,10 +108,7 @@ class Search extends Component {
     render() {
         return(
             <div>
-                <div className="login-buttons">
-                    <p>Register</p>
-                    <p></p>
-                </div>
+                <h1>Search For Job</h1>
                 <div className="search-container">
                     <form className="search-form" onSubmit={this.handleSumbit.bind(this)}>
                         <input type="text" onChange={this.handleChange.bind(this)}/>
