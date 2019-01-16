@@ -28,7 +28,6 @@ class App extends Component {
   }
 
   handleChange(event) {
-    console.log('$$###$$$$$$$$$$$$$', event.target.value);
     this.setState({
       username: event.target.value
     })
@@ -60,20 +59,11 @@ class App extends Component {
       alert("Plase Login or Register to save and apply to job")
     } else {
       this.insertSavedJob(job)
-      // const index = this.state.results.indexOf(job); 
-      // console.log("index",index);
-      // // const {results} = this.state; 
-      // // results.slice(index, 1); 
-      // // console.log('## RRR', results.slice(index, 1))
-      // const updatedResult = this.state.results.filter((el, i) => i !== index )
-      // this.setState({ results: updatedResult })
-
     }
   }
 
   //function to insert the saved job in the javed_job database table
   insertSavedJob(savedJob) {
-    console.log('$$###################', savedJob)
 
     const url = `${API_URL}job/`
     savedJob.user_id = this.state.userInfo.id
@@ -123,7 +113,6 @@ class App extends Component {
   }
 
   createNewUser(user) {
-    console.log('####################', user)
     const url = `${API_URL}user`;
     fetch(url, {
       method: 'POST',
@@ -159,10 +148,10 @@ class App extends Component {
   }
 
   handleResults(dataResult) {
+    console.log("%%%%%%%%%%%%%%%%%%Results", dataResult)
     this.setState({
       results: dataResult
     })
-    console.log("results %%%%%", this.state.results)
   }
 
   handleRegister() {
