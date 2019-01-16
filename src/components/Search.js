@@ -26,8 +26,27 @@ class Search extends Component {
         this.setState({
             selectedJob: null
         })
+        const LookupIP = 'https://ipapi.co/json/';
+
         const url1 = `https://jobs.github.com/positions.json?description=${this.state.searchTerm}&search=node`
         const url2 = `https://authenticjobs.com/api/?api_key=e2da8aacbfce53f1e1b9559409a51691&format=json&method=aj.jobs.search&keywords=${this.state.searchTerm}`
+
+        fetch(LookupIP)
+        .then(data => {
+            console.log(data)
+            // currentIp = data.ip;
+            // console.log (currentIp);
+            fetch(`http://api.indeed.com/ads/apisearch?publisher=${process.env.indeed_API}&q=${this.state.searchTerm}&userip=${data.ip}&useragent=Mozilla/%2F4.0%28Firefox%29&v=2`)
+            .then(response => response.json())
+            .then(data =>{
+                this.handleIndeedData(data)
+            })
+            .catch(error => {
+                console.log('Search component handleSumbit of Indeed: ', error);
+            })
+
+        })
+        
 
         fetch(url1)
         .then(response => response.json())
@@ -90,6 +109,9 @@ class Search extends Component {
         // this.setState({
         //     results: updatedResults
         // })
+    }
+    handleIndeedData(data){
+        
     }
 
     renderResults() {
