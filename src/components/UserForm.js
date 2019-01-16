@@ -4,14 +4,15 @@ class UserForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: props.activeShow ? props.activeShow.username : '',
-      firstname: props.activeShow ? props.activeShow.firstname : '',
-      lastname: props.activeShow ? props.activeShow.lastname : '',
-      email: props.activeShow ? props.activeShow.email : '',
-      phone: props.activeShow ? props.activeShow.phone : '',
-      id: props.activeShow ? props.activeShow.id : null
+      username: props.activeUser ? props.activeUser.username : '',
+      firstname: props.activeUser ? props.activeUser.firstname : '',
+      lastname: props.activeUser ? props.activeUser.lastname : '',
+      email: props.activeUser ? props.activeUser.email : '',
+      phone: props.activeUser ? props.activeUser.phone : '',
+      // id: props.activeUser ? props.activeUser.id : null
     }
   }
+
   handleChange(event) {
     const currentInput = event.target.name;
     const newValue = event.target.value;
@@ -27,14 +28,15 @@ class UserForm extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    this.props.handleSubmit(this.state)
+    this.props.handleFormSubmit(this.state)
   }
+
 
   render() {
     return (
-      <div className="modal">
-        <form className="show-form" onSubmit={this.handleSubmit.bind(this)}>
-          <div className="close-modal" onClick={() => { this.props.toggleModal() }}>x</div>
+      <div className="">
+        <form className="user-form" onSubmit={this.handleSubmit.bind(this)}>
+          <div className="close-modal" onClick={() => this.props.handleRegister()}>x</div>
           <label>username:</label><input type="text" value={this.state.username} name="username" onChange={this.handleChange.bind(this)} /><br />
           <label>firstname:</label><input type="text" value={this.state.firstname} name="firstname" onChange={this.handleChange.bind(this)} /><br />
           <label>lastname:</label><input type="text" value={this.state.lastname} name="lastname" onChange={this.handleChange.bind(this)} /><br />
