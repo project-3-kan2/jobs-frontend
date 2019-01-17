@@ -1,6 +1,7 @@
 import React , { Component } from 'react';
 import SearchResult from './SearchResult';
 import JobDetails from './JobDetails';
+// var ip = require('ip');
 
 class Search extends Component {
     // constructor() {
@@ -18,7 +19,7 @@ class Search extends Component {
         // this.setState({
         //     searchTerm: event.target.value,
         // })
-        this.props.setSearchTerm.bind(userInput)
+        this.props.setSearchTerm(userInput)
     }
 
     handleSumbit(event) {
@@ -26,12 +27,12 @@ class Search extends Component {
         // this.setState({
         //     selectedJob: null
         // })
-
         this.props.setSelectedJob.bind(null);
 
+        const LookupIP = 'https://ipapi.co/json/';
         const url1 = `https://jobs.github.com/positions.json?description=${this.props.searchTerm}&search=node`
         const url2 = `https://authenticjobs.com/api/?api_key=e2da8aacbfce53f1e1b9559409a51691&format=json&method=aj.jobs.search&keywords=${this.props.searchTerm}`
-
+        
         fetch(url1)
         .then(response => response.json())
         .then(data => {
@@ -41,7 +42,7 @@ class Search extends Component {
         .catch(error => {
             console.log('Search component handleSumbit of github: ', error);
         })
-
+        
         fetch(url2)
         .then(response => response.json())
         .then(data => {
@@ -51,8 +52,19 @@ class Search extends Component {
         .catch(error => {
             console.log('Search component handleSumbit of authenticjobs : ', error);
         })
+        
+        fetch(LookupIP)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+            this.handleIndeedApi(data.ip)
+            
+        })
+        .catch(error => {
+            console.log(error)
+        }) 
     }
-
+    
     handleGithubData(data) {
         const img = 'https://image.freepik.com/free-icon/blocking-symbol_318-40339.jpg'
         const parsedData = data.map ( job => {
@@ -94,6 +106,39 @@ class Search extends Component {
         //     results: updatedResults
         // })
     }
+    handleIndeedApi(ip) {
+
+        const url = `http://api.indeed.com/ads/apisearch?publisher=1303284387458115&q=${this.props.searchTerm}&userip=${ip}&useragent=Mozilla/%2F4.0%28Firefox%29&v=2&format=json&limit=25`
+        fetch(url)
+            // note: if you want to specify saudi add  &l=Saudi+Arabia
+            .then(response => response.json())
+            .then(data => {
+                console.log('####$$$$$$$$$$$$$$$$$$$$$$', data);
+                this.handleIndeedData(data.results)
+            })
+            .catch(error => {
+                console.log('Search component handleSumbit of Indeed: ', error);
+            })
+    } 
+
+    handleIndeedData(indeedData){
+        const img = 'https://image.freepik.com/free-icon/blocking-symbol_318-40339.jpg'
+        const parsedIndeedData = indeedData.map(job => {
+            return {
+                title: job.jobtitle,
+                description: job.snippet.replace(/<\/?[^>]+(>|$)/g, ""),
+                job_url: job.url,
+                job_location: job.formattedLocationFull === undefined ? "unknown" : job.country,
+                company_logo: img,
+                company_name: job.company
+            }
+        })
+        console.log('handleIndeedData', parsedIndeedData);
+
+        const updatedResults = this.props.results.concat(parsedIndeedData);
+        this.props.handleResults(updatedResults);
+    }
+
 
     renderResults() {
         return this.props.results.map((job, index) => {
