@@ -12,10 +12,12 @@ const UserProfile = (props) => {
           </div>
         <div>
         <div className="editUserProfile">
-
           <button onClick={() => props.handleRegister()}>Edit</button>
-
         </div>
+        <div>
+          {props.renderSavedJob()}
+        </div>
+        
       </div>
         </div>
     )
