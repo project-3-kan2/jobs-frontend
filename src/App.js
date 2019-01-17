@@ -18,8 +18,22 @@ class App extends Component {
       results: [],
       userForm: false,
       showProfile: false,
-      userSavedJob: []
+      userSavedJob: [],
+      searchTerm: '',
+      selectedJob: null
     }
+  }
+
+  setSearchTerm(term) {
+    this.setState({
+      searchTerm: term
+    })
+  }
+
+  setSelectedJob(job) {
+    this.setState({
+      selectedJob: job
+  })
   }
 
   setLoginForm() {
@@ -199,8 +213,10 @@ class App extends Component {
       activeUser: false,
       userInfo: undefined,
       results: [],
-      userProfile: false,
-      userForm: false
+      showProfile: false,
+      userForm: false,
+      searchTerm: '',
+      selectedJob: null
     })
   }
 
@@ -234,7 +250,12 @@ class App extends Component {
                                           handleResults={this.handleResults.bind(this)} 
                                           results={this.state.results} 
                                           userInfo={this.state.userInfo}
-                                          showProfile={this.state.showProfile} /> }
+                                          showProfile={this.state.showProfile}
+                                          setSearchTerm={this.setSearchTerm.bind(this)}
+                                          searchTerm={this.state.searchTerm}
+                                          setSelectedJob={this.setSelectedJob.bind(this)}
+                                          renderSavedJob={this.renderSavedJob.bind(this)}
+                                          selectedJob={this.state.selectedJob} /> }
       </div>
     );
   }

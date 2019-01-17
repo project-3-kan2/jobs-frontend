@@ -1,160 +1,296 @@
-import React , { Component } from 'react';
-import SearchResult from './SearchResult';
-import JobDetails from './JobDetails';
+import React, { Component } from 'react';
+import './App.css';
+import Search from './components/Search';
+import UserForm from './components/UserForm';
+import UserProfile from './components/UserProfile';
+import SearchResult from './components/SearchResult';
 
-class Search extends Component {
-    constructor() {
-        super();
-        this.state = {
-            searchTerm: '',
-            // results: [],
-            selectedJob: null
-        }
+const API_URL = 'http://localhost:3000/';
+
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      username: '',
+      activeUser: false,
+      loginForm: false,
+      userInfo: undefined,
+      results: [],
+      userForm: false,
+      showProfile: false,
+      userSavedJob: [],
+      searchTerm: '',
+      selectedJob: null
     }
+  }
 
-    handleChange(event) {
-        // const userInput = event.target.value;
-        // const updateSearchTerm = userInput.split(' ').join('-');
+  setSearchTerm(term) {
+    this.setState({
+      searchTerm: term
+    })
+  }
+
+  setSelectedJob(job) {
+    this.setState({
+      selectedJob: job
+  })
+  }
+
+  setLoginForm() {
+    this.setState({
+      loginForm: !this.state.loginForm,
+      userForm: false
+    });
+  }
+
+  handleChange(event) {
+    this.setState({
+      username: event.target.value
+    })
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+
+    fetch(`${API_URL}user/${this.state.username}`)
+      .then(response => response.json())
+      .then(data => {
+        console.log('YYYYY',data);
         this.setState({
-            searchTerm: event.target.value,
-            results: []
+          userInfo: data,
+          loginForm: false,
+          activeUser:true
         })
-    }
+      })
+      .catch(error => {
+        console.log('App.js handleSubmit function: ', error);
+        alert("register plz");
+      })
+    console.log(this.state.userInfo);
+  }
 
-    handleSumbit(event) {
-        event.preventDefault();
+  handleUserSavedJob(user) {
+
+    fetch(`${API_URL}job/${user.id}`)
+    .then(response => response.json())
+    .then(data => {
+      this.setState({
+        userSavedJob: data
+      })
+      console.log('$$$$$$$$$$$$$$$$TTTTTTTTTTTTTTT', this.state.userSavedJob)
+
+    })
+    .catch(error => {
+      console.log('App.js handleUserSavedJob function: ', error);
+      alert("register plz");
+    })
+  }
+
+  removeSavedJob(userSavedJobId) {
+
+    const url = `${API_URL}job/${userSavedJobId}`
+
+    fetch(url, {
+      method: 'DELETE'
+    })
+    .then(response => response.json())
+      .then(data => {
+        const updatedUserSavedJob = this.state.userSavedJob.filter( savedJob => savedJob.id !== userSavedJobId )
         this.setState({
-            selectedJob: null
+          userSavedJob: updatedUserSavedJob,
+          selectedJob: null
         })
-        const LookupIP = 'https://ipapi.co/json/';
+      })
+      .catch(error => {
+        console.log(error);
+      })
+  }
 
-        const url1 = `https://jobs.github.com/positions.json?description=${this.state.searchTerm}&search=node`
-        const url2 = `https://authenticjobs.com/api/?api_key=${process.env.Authentic_API}&format=json&method=aj.jobs.search&keywords=${this.state.searchTerm}`
+  renderSavedJob() {
+    return this.state.userSavedJob.map((job, index) => {
+      return <SearchResult key={index}
+                           job={job}
+                           showProfile={this.state.showProfile} 
+                           handleSaveJob={this.handleSaveJob} 
+                           removeSavedJob={this.removeSavedJob.bind(this)}/>
+    })
+  }
 
-        fetch(LookupIP)
-        .then(response => response.json())
-        .then(data => {
-            console.log(data)
-            // currentIp = data.ip;
-            // console.log (currentIp);
-            fetch(`http://api.indeed.com/ads/apisearch?publisher=${process.env.indeed_API}&q=${this.state.searchTerm}&userip=${data.ip}&useragent=Mozilla/%2F4.0%28Firefox%29&v=2&format=json&limit=25`)
-            // note: if you want to specify saudi add  &l=Saudi+Arabia
-            .then(response => response.json())
-            .then(indeed =>{
-                this.handleIndeedData(indeed)
-            })
-            .catch(error => {
-                console.log('Search component handleSumbit of Indeed: ', error);
-            })
-
-        })
-        
-
-        fetch(url1)
-        .then(response => response.json())
-        .then(data => {
-            console.log('github job api result: ', data)
-            this.handleGithubData(data)
-        })
-        .catch(error => {
-            console.log('Search component handleSumbit of github: ', error);
-        })
-
-        fetch(url2)
-        .then(response => response.json())
-        .then(data => {
-            console.log('authenticjobs api result: ', data)
-            this.handleAuthenticData(data.listings.listing)
-        })
-        .catch(error => {
-            console.log('Search component handleSumbit of authenticjobs : ', error);
-        })
+  handleSaveJob(job) {
+    if (this.state.userInfo === undefined) {
+      alert("Plase Login or Register to save and apply to job")
+    } else {
+      this.insertSavedJob(job)
     }
+  }
 
-    handleGithubData(data) {
-        const img = 'https://image.freepik.com/free-icon/blocking-symbol_318-40339.jpg'
-        const parsedData = data.map ( job => {
-            return{
-                title: job.title,
-                description: job.description.replace(/<\/?[^>]+(>|$)/g, ""),
-                job_url: job.url,
-                job_location: job.location,
-                company_logo: job.company_logo === null ? img : job.company_logo,
-                company_name: job.company
-            }
+  //function to insert the saved job in the javed_job database table
+  insertSavedJob(savedJob) {
+
+    const url = `${API_URL}job/`
+    savedJob.user_id = this.state.userInfo.id;
+
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(savedJob)
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log('DATA')
+        console.log(data);
+        const index = this.state.results.indexOf(savedJob);
+        console.log("index", index);
+        // const {results} = this.state; 
+        // results.slice(index, 1); 
+        // console.log('## RRR', results.slice(index, 1))
+        const updatedResult = this.state.results.filter((el, i) => i !== index)
+        this.setState({ 
+          results: updatedResult,
+          selectedJob: null
+         })
+      })
+      .catch(error => {
+        console.log(error);
+      })
+  }
+
+  updateUserInfo(user) {
+    console.log("##", user);
+    const url = `${API_URL}user/${user.id}`
+
+    fetch(url, {
+      method: 'PUT',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(user)
+    })
+      .then(response => response.json())
+      .then(data => {
+        this.setState({ 
+          userInfo: data,
+          // userForm: false 
         })
-        console.log('handleGithubData', parsedData);
-        this.props.handleResults(parsedData)
-        
-        // this.setState({
-        //     results: parsedData
-        // })
-    }
+      })
+      .catch(error => {
+        console.log(error);
+      })
+  }
 
-    handleAuthenticData(listings) {
-        const img = 'https://image.freepik.com/free-icon/blocking-symbol_318-40339.jpg'
-        const parsedListings = listings.map ( listing => {
-            return{
-                title: listing.title,
-                description: listing.description.replace(/<\/?[^>]+(>|$)/g, ""),
-                job_url: listing.company.apply_url,
-                job_location: listing.company.location === undefined ? "unknown" : listing.company.location.name ,
-                company_logo: img,
-                company_name: listing.company.name
-            }
-        })
-        console.log('handleAuthenticData', parsedListings);
+  // errorrrrrr
+  createNewUser(user) {
+    const url = `${API_URL}user`;
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(user)
+    })
+      .then(response => response.json())
+      .then(data => {
+        this.setState({ 
+          userInfo: data,
+          userForm: false
+         })
+      })
+  }
 
-        const updatedResults = this.props.results.concat(parsedListings);
-        this.props.handleResults(updatedResults);       
-        //  console.log('updatedResults ', updatedResults)
-        // this.setState({
-        //     results: updatedResults
-        // })
-    }
-    handleIndeedData(indeed){
-        const img = 'https://image.freepik.com/free-icon/blocking-symbol_318-40339.jpg'
-        parsedIndeedData = data.map ( data => {
-            return {
-                title : results.jobtitle,
-                description: results.snippet,
-                job_url: results.url,
-                job_location: results.formattedLocationFull,
-                company_logo: img,
-                company_name: results.company
-            }
-        })
-        const updatedIndeedData = this.props.results.concat(parsedIndeedData);
-        this.props.handleResults(updatedIndeedData);
-    }
+  handleFormSubmit(user) {
+    this.state.activeUser ? this.updateUserInfo(user) : this.createNewUser(user)
+  }
 
-    renderResults() {
-        return this.props.results.map((job, index) => {
-            return <SearchResult handleSaveJob={this.props.handleSaveJob} key={index} job={job} setSelectedJob={this.setSelectedJob.bind(this)} showProfile={this.props.showProfile}/>
-        })
-    }
+  //This function will render the log-in form it the login is true
+  renderLoginForm() {
+    return (
+      <div>
+        <form onSubmit={this.handleSubmit.bind(this)}>
+          <label>Username: </label>
+          <input type="text" placeholder="Enter username" onChange={this.handleChange.bind(this)} />
+          <button>Login</button>
+        </form>
+      </div>
+    )
+  }
 
-    // changr the state of the selectedjob when user click on the job
-    setSelectedJob(activeJob) {
-        this.setState({
-            selectedJob: activeJob
-        })
-    }
+  handleResults(dataResult) {
+    console.log("%%%%%%%%%%%%%%%%%%Results", dataResult)
+    this.setState({
+      results: dataResult
+    })
+  }
 
-    render() {
-        return(
-            <div>
-                <h1>Search For Job</h1>
-                <div className="search-container">
-                    <form className="search-form" onSubmit={this.handleSumbit.bind(this)}>
-                        <input type="text" onChange={this.handleChange.bind(this)}/>
-                        <button><img src="https://i.imgur.com/WX7bym4.png" alt="search"/></button>
-                    </form>
-                    {this.state.selectedJob === null ? this.renderResults() : <JobDetails userInfo={this.props.userInfo} selectedJob={this.state.selectedJob} handleSaveJob={this.props.handleSaveJob.bind(this)}/> }
-                </div>
-            </div>
-        )
+  handleRegister() {
+    this.setState({
+      userForm: !this.state.userForm,
+      loginForm: false
+    });
+  }
+
+  renderUserForm() {
+    return <UserForm userInfo={this.state.userInfo} handleFormSubmit={this.handleFormSubmit.bind(this)} handleRegister={this.handleRegister.bind(this)} />
+  }
+
+  renderUserProfile(){
+    return <UserProfile user={this.state.userInfo} handleRegister={this.handleRegister.bind(this)} renderSavedJob={this.renderSavedJob.bind(this)}/>
+  }
+
+  handleLogout() {
+    this.setState({
+      username: '',
+      activeUser: false,
+      userInfo: undefined,
+      results: [],
+      showProfile: false,
+      userForm: false,
+      searchTerm: '',
+      selectedJob: null
+    })
+  }
+
+  setUserProfile() {
+    this.setState({ showProfile: true})
+    this.handleUserSavedJob(this.state.userInfo);
+  }
+
+  renderNavButton() {
+    if(this.state.userInfo) {
+      return(<div>
+        <p className="cursor" onClick={() => this.setUserProfile()}>{this.state.userInfo.username}</p>
+        <p className="cursor" onClick={() => this.handleLogout()}>Logout</p>
+      </div>)
+    } else {
+      return( <div className="">
+          <p className="cursor" onClick={() => this.handleRegister()}>Register</p>
+          <p className="cursor" onClick={() => this.setLoginForm()}>Login</p>
+      </div>)
     }
+  }
+
+  render() {
+    return (
+      <div className="">
+        {this.renderNavButton()}
+        {this.state.loginForm ? this.renderLoginForm() : ''}
+        {this.state.userForm ? this.renderUserForm() : ''}
+        {this.state.showProfile ? this.renderUserProfile() : 
+                                  <Search handleSaveJob={this.handleSaveJob.bind(this)} 
+                                          handleResults={this.handleResults.bind(this)} 
+                                          results={this.state.results} 
+                                          userInfo={this.state.userInfo}
+                                          showProfile={this.state.showProfile}
+                                          setSearchTerm={this.setSearchTerm.bind(this)}
+                                          searchTerm={this.state.searchTerm}
+                                          setSelectedJob={this.setSelectedJob.bind(this)}
+                                          renderSavedJob={this.renderSavedJob.bind(this)}
+                                          selectedJob={this.state.selectedJob}
+                                           /> }
+      </div>
+    );
+  }
 }
 
-export default Search;
+export default App;
