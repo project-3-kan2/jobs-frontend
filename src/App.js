@@ -12,7 +12,6 @@ class App extends Component {
     super();
     this.state = {
       username: '',
-      activeUser: false,
       loginForm: false,
       userInfo: undefined,
       results: [],
@@ -58,8 +57,7 @@ class App extends Component {
         console.log('YYYYY',data);
         this.setState({
           userInfo: data,
-          loginForm: false,
-          activeUser:true
+          loginForm: false
         })
       })
       .catch(error => {
@@ -86,9 +84,33 @@ class App extends Component {
     })
   }
 
+  removeSavedJob(userSavedJobId) {
+
+    const url = `${API_URL}job/${userSavedJobId}`
+
+    fetch(url, {
+      method: 'DELETE'
+    })
+    .then(response => response.json())
+      .then(data => {
+        const updatedUserSavedJob = this.state.userSavedJob.filter( savedJob => savedJob.id !== userSavedJobId )
+        this.setState({
+          userSavedJob: updatedUserSavedJob,
+          selectedJob: null
+        })
+      })
+      .catch(error => {
+        console.log(error);
+      })
+  }
+
   renderSavedJob() {
     return this.state.userSavedJob.map((job, index) => {
-      return <SearchResult handleSaveJob={this.handleSaveJob} key={index} job={job} showProfile={this.state.showProfile}/>
+      return <SearchResult key={index}
+                           job={job}
+                           showProfile={this.state.showProfile} 
+                           handleSaveJob={this.handleSaveJob} 
+                           removeSavedJob={this.removeSavedJob.bind(this)}/>
     })
   }
 
@@ -123,11 +145,18 @@ class App extends Component {
         // results.slice(index, 1); 
         // console.log('## RRR', results.slice(index, 1))
         const updatedResult = this.state.results.filter((el, i) => i !== index)
-        this.setState({ results: updatedResult })
+        this.setState({ 
+          results: updatedResult,
+          selectedJob: null
+         })
       })
       .catch(error => {
         console.log(error);
       })
+  }
+
+  handleFormSubmit(user) {
+    this.state.userInfo ? this.updateUserInfo(user) : this.createNewUser(user)
   }
 
   updateUserInfo(user) {
@@ -143,15 +172,21 @@ class App extends Component {
     })
       .then(response => response.json())
       .then(data => {
-        this.setState({ userInfo: data })
+        this.setState({ 
+          userInfo: data,
+          userForm: false 
+        })
       })
       .catch(error => {
         console.log(error);
       })
   }
 
+  // errorrrrrr
   createNewUser(user) {
-    const url = `${API_URL}user`;
+    
+    const url = `${API_URL}user`
+
     fetch(url, {
       method: 'POST',
       headers: {
@@ -168,9 +203,6 @@ class App extends Component {
       })
   }
 
-  handleFormSubmit(user) {
-    this.state.activeUser ? this.updateUserInfo(user) : this.createNewUser(user)
-  }
 
   //This function will render the log-in form it the login is true
   renderLoginForm() {
@@ -210,7 +242,6 @@ class App extends Component {
   handleLogout() {
     this.setState({
       username: '',
-      activeUser: false,
       userInfo: undefined,
       results: [],
       showProfile: false,
@@ -255,7 +286,8 @@ class App extends Component {
                                           searchTerm={this.state.searchTerm}
                                           setSelectedJob={this.setSelectedJob.bind(this)}
                                           renderSavedJob={this.renderSavedJob.bind(this)}
-                                          selectedJob={this.state.selectedJob} /> }
+                                          selectedJob={this.state.selectedJob}
+                                           /> }
       </div>
     );
   }
