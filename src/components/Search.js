@@ -7,7 +7,6 @@ class Search extends Component {
         super();
         this.state = {
             searchTerm: '',
-            // results: [],
             selectedJob: null
         }
     }

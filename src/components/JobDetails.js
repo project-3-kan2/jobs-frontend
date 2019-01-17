@@ -26,7 +26,6 @@ const JobDetails = props => {
           {props.userInfo === undefined? '' :
           <button onClick={() => window.open(`${props.selectedJob.job_url}`, "_blank")}>Apply</button>}
           <button onClick={() => props.handleSaveJob(props.selectedJob)}>Save</button>
-            {/* <button onClick={() => { props.handelClicked() }}>Save</button> */}
           </div>
         </div>
       </div>
@@ -34,14 +33,6 @@ const JobDetails = props => {
   
   );
 }
-// handelClicked {
-// if(this.props.Singed ){
-//   props.toggleModal(true); /
-// }
-// eles {
-//   props.toggleModal(null);
-// }
-
 
 export default JobDetails;
 
