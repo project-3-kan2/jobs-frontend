@@ -12,7 +12,6 @@ class App extends Component {
     super();
     this.state = {
       username: '',
-      activeUser: false,
       loginForm: false,
       userInfo: undefined,
       results: [],
@@ -58,8 +57,7 @@ class App extends Component {
         console.log('YYYYY',data);
         this.setState({
           userInfo: data,
-          loginForm: false,
-          activeUser:true
+          loginForm: false
         })
       })
       .catch(error => {
@@ -157,6 +155,10 @@ class App extends Component {
       })
   }
 
+  handleFormSubmit(user) {
+    this.state.userInfo ? this.updateUserInfo(user) : this.createNewUser(user)
+  }
+
   updateUserInfo(user) {
     console.log("##", user);
     const url = `${API_URL}user/${user.id}`
@@ -182,7 +184,9 @@ class App extends Component {
 
   // errorrrrrr
   createNewUser(user) {
-    const url = `${API_URL}user`;
+    
+    const url = `${API_URL}user`
+
     fetch(url, {
       method: 'POST',
       headers: {
@@ -199,9 +203,6 @@ class App extends Component {
       })
   }
 
-  handleFormSubmit(user) {
-    this.state.activeUser ? this.updateUserInfo(user) : this.createNewUser(user)
-  }
 
   //This function will render the log-in form it the login is true
   renderLoginForm() {
@@ -241,7 +242,6 @@ class App extends Component {
   handleLogout() {
     this.setState({
       username: '',
-      activeUser: false,
       userInfo: undefined,
       results: [],
       showProfile: false,
