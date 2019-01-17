@@ -65,6 +65,19 @@ class Search extends Component {
         }) 
     }
     
+    handleIndeedApi(ip) {
+        const url = `http://api.indeed.com/ads/apisearch?publisher=1303284387458115&q=${this.props.searchTerm}&userip=${ip}&useragent=Mozilla/%2F4.0%28Firefox%29&v=2&format=json&limit=25`
+        fetch(url)
+            // note: if you want to specify saudi add  &l=Saudi+Arabia
+            .then(response => response.json())
+            .then(data => {
+                this.handleIndeedData(data.results)
+            })
+            .catch(error => {
+                console.log('Search component handleSumbit of Indeed: ', error);
+            })
+    } 
+    
     handleGithubData(data) {
         const img = 'https://image.freepik.com/free-icon/blocking-symbol_318-40339.jpg'
         const parsedData = data.map ( job => {
@@ -106,20 +119,6 @@ class Search extends Component {
         //     results: updatedResults
         // })
     }
-    handleIndeedApi(ip) {
-
-        const url = `http://api.indeed.com/ads/apisearch?publisher=1303284387458115&q=${this.props.searchTerm}&userip=${ip}&useragent=Mozilla/%2F4.0%28Firefox%29&v=2&format=json&limit=25`
-        fetch(url)
-            // note: if you want to specify saudi add  &l=Saudi+Arabia
-            .then(response => response.json())
-            .then(data => {
-                console.log('####$$$$$$$$$$$$$$$$$$$$$$', data);
-                this.handleIndeedData(data.results)
-            })
-            .catch(error => {
-                console.log('Search component handleSumbit of Indeed: ', error);
-            })
-    } 
 
     handleIndeedData(indeedData){
         const img = 'https://image.freepik.com/free-icon/blocking-symbol_318-40339.jpg'

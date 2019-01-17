@@ -62,7 +62,7 @@ class App extends Component {
       })
       .catch(error => {
         console.log('App.js handleSubmit function: ', error);
-        alert("register plz");
+        alert("This username NOT Register");
       })
     console.log(this.state.userInfo);
   }
@@ -182,9 +182,7 @@ class App extends Component {
       })
   }
 
-  // errorrrrrr
   createNewUser(user) {
-    
     const url = `${API_URL}user`
 
     fetch(url, {
@@ -202,7 +200,6 @@ class App extends Component {
          })
       })
   }
-
 
   //This function will render the log-in form it the login is true
   renderLoginForm() {
