@@ -3,6 +3,7 @@ import './App.css';
 import Search from './components/Search';
 import UserForm from './components/UserForm';
 import UserProfile from './components/UserProfile';
+import SearchResult from './components/SearchResult';
 
 const API_URL = 'http://localhost:3000/';
 
@@ -16,7 +17,8 @@ class App extends Component {
       userInfo: undefined,
       results: [],
       userForm: false,
-      showProfile: false
+      showProfile: false,
+      userSavedJob: []
     }
   }
 
@@ -28,7 +30,6 @@ class App extends Component {
   }
 
   handleChange(event) {
-    console.log('$$###$$$$$$$$$$$$$', event.target.value);
     this.setState({
       username: event.target.value
     })
@@ -40,7 +41,7 @@ class App extends Component {
     fetch(`${API_URL}user/${this.state.username}`)
       .then(response => response.json())
       .then(data => {
-        console.log(data);
+        console.log('YYYYY',data);
         this.setState({
           userInfo: data,
           loginForm: false,
@@ -51,8 +52,30 @@ class App extends Component {
         console.log('App.js handleSubmit function: ', error);
         alert("register plz");
       })
-
     console.log(this.state.userInfo);
+  }
+
+  handleUserSavedJob(user) {
+
+    fetch(`${API_URL}job/${user.id}`)
+    .then(response => response.json())
+    .then(data => {
+      this.setState({
+        userSavedJob: data
+      })
+      console.log('$$$$$$$$$$$$$$$$TTTTTTTTTTTTTTT', this.state.userSavedJob)
+
+    })
+    .catch(error => {
+      console.log('App.js handleUserSavedJob function: ', error);
+      alert("register plz");
+    })
+  }
+
+  renderSavedJob() {
+    return this.state.userSavedJob.map((job, index) => {
+      return <SearchResult handleSaveJob={this.handleSaveJob} key={index} job={job} showProfile={this.state.showProfile}/>
+    })
   }
 
   handleSaveJob(job) {
@@ -60,23 +83,14 @@ class App extends Component {
       alert("Plase Login or Register to save and apply to job")
     } else {
       this.insertSavedJob(job)
-      // const index = this.state.results.indexOf(job); 
-      // console.log("index",index);
-      // // const {results} = this.state; 
-      // // results.slice(index, 1); 
-      // // console.log('## RRR', results.slice(index, 1))
-      // const updatedResult = this.state.results.filter((el, i) => i !== index )
-      // this.setState({ results: updatedResult })
-
     }
   }
 
   //function to insert the saved job in the javed_job database table
   insertSavedJob(savedJob) {
-    console.log('$$###################', savedJob)
 
     const url = `${API_URL}job/`
-    savedJob.user_id = this.state.userInfo.id
+    savedJob.user_id = this.state.userInfo.id;
 
     fetch(url, {
       method: 'POST',
@@ -123,7 +137,6 @@ class App extends Component {
   }
 
   createNewUser(user) {
-    console.log('####################', user)
     const url = `${API_URL}user`;
     fetch(url, {
       method: 'POST',
@@ -159,10 +172,10 @@ class App extends Component {
   }
 
   handleResults(dataResult) {
+    console.log("%%%%%%%%%%%%%%%%%%Results", dataResult)
     this.setState({
       results: dataResult
     })
-    console.log("results %%%%%", this.state.results)
   }
 
   handleRegister() {
@@ -177,7 +190,7 @@ class App extends Component {
   }
 
   renderUserProfile(){
-    return <UserProfile user={this.state.userInfo} handleRegister={this.handleRegister.bind(this)}/>
+    return <UserProfile user={this.state.userInfo} handleRegister={this.handleRegister.bind(this)} renderSavedJob={this.renderSavedJob.bind(this)}/>
   }
 
   handleLogout() {
@@ -192,7 +205,8 @@ class App extends Component {
   }
 
   setUserProfile() {
-    this.setState({ userProfile: true})
+    this.setState({ showProfile: true})
+    this.handleUserSavedJob(this.state.userInfo);
   }
 
   renderNavButton() {
@@ -215,8 +229,12 @@ class App extends Component {
         {this.renderNavButton()}
         {this.state.loginForm ? this.renderLoginForm() : ''}
         {this.state.userForm ? this.renderUserForm() : ''}
-        {this.state.userProfile ? this.renderUserProfile() : 
-                                  <Search handleSaveJob={this.handleSaveJob.bind(this)} handleResults={this.handleResults.bind(this)} results={this.state.results} userInfo={this.state.userInfo} /> }
+        {this.state.showProfile ? this.renderUserProfile() : 
+                                  <Search handleSaveJob={this.handleSaveJob.bind(this)} 
+                                          handleResults={this.handleResults.bind(this)} 
+                                          results={this.state.results} 
+                                          userInfo={this.state.userInfo}
+                                          showProfile={this.state.showProfile} /> }
       </div>
     );
   }

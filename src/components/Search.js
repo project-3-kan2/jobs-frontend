@@ -130,7 +130,7 @@ class Search extends Component {
 
     renderResults() {
         return this.props.results.map((job, index) => {
-            return <SearchResult handleSaveJob={this.props.handleSaveJob} key={index} job={job} setSelectedJob={this.setSelectedJob.bind(this)}/>
+            return <SearchResult handleSaveJob={this.props.handleSaveJob} key={index} job={job} setSelectedJob={this.setSelectedJob.bind(this)} showProfile={this.props.showProfile}/>
         })
     }
 
@@ -150,7 +150,7 @@ class Search extends Component {
                         <input type="text" onChange={this.handleChange.bind(this)}/>
                         <button><img src="https://i.imgur.com/WX7bym4.png" alt="search"/></button>
                     </form>
-                    {this.state.selectedJob === null ? this.renderResults() : <JobDetails userInfo={this.props.userInfo} selectedJob={this.state.selectedJob}/> }
+                    {this.state.selectedJob === null ? this.renderResults() : <JobDetails userInfo={this.props.userInfo} selectedJob={this.state.selectedJob} handleSaveJob={this.props.handleSaveJob.bind(this)}/> }
                 </div>
             </div>
         )
