@@ -6,27 +6,30 @@ class Search extends Component {
     constructor() {
         super();
         this.state = {
-            searchTerm: '',
+            // searchTerm: '',
             selectedJob: null
         }
     }
 
     handleChange(event) {
-        // const userInput = event.target.value;
+        const userInput = event.target.value;
         // const updateSearchTerm = userInput.split(' ').join('-');
-        this.setState({
-            searchTerm: event.target.value,
-            results: []
-        })
+        // this.setState({
+        //     searchTerm: event.target.value,
+        // })
+        this.props.setSearchTerm.bind(userInput)
     }
 
     handleSumbit(event) {
         event.preventDefault();
-        this.setState({
-            selectedJob: null
-        })
-        const url1 = `https://jobs.github.com/positions.json?description=${this.state.searchTerm}&search=node`
-        const url2 = `https://authenticjobs.com/api/?api_key=e2da8aacbfce53f1e1b9559409a51691&format=json&method=aj.jobs.search&keywords=${this.state.searchTerm}`
+        // this.setState({
+        //     selectedJob: null
+        // })
+
+        this.props.setSelectedJob.bind(null);
+
+        const url1 = `https://jobs.github.com/positions.json?description=${this.props.searchTerm}&search=node`
+        const url2 = `https://authenticjobs.com/api/?api_key=e2da8aacbfce53f1e1b9559409a51691&format=json&method=aj.jobs.search&keywords=${this.props.searchTerm}`
 
         fetch(url1)
         .then(response => response.json())
@@ -93,16 +96,14 @@ class Search extends Component {
 
     renderResults() {
         return this.props.results.map((job, index) => {
-            return <SearchResult handleSaveJob={this.props.handleSaveJob} key={index} job={job} setSelectedJob={this.setSelectedJob.bind(this)} showProfile={this.props.showProfile}/>
+            return <SearchResult handleSaveJob={this.props.handleSaveJob} key={index} job={job} setSelectedJob={this.props.setSelectedJob.bind(job)} showProfile={this.props.showProfile}/>
         })
     }
 
     // changr the state of the selectedjob when user click on the job
-    setSelectedJob(activeJob) {
-        this.setState({
-            selectedJob: activeJob
-        })
-    }
+    // setSelectedJob(activeJob) {
+    //     this.props.setSelectedJob(activeJob)
+    // }
 
     render() {
         return(
@@ -113,7 +114,7 @@ class Search extends Component {
                         <input type="text" onChange={this.handleChange.bind(this)}/>
                         <button><img src="https://i.imgur.com/WX7bym4.png" alt="search"/></button>
                     </form>
-                    {this.state.selectedJob === null ? this.renderResults() : <JobDetails userInfo={this.props.userInfo} selectedJob={this.state.selectedJob} handleSaveJob={this.props.handleSaveJob.bind(this)}/> }
+                    {this.props.selectedJob === null ? this.renderResults() : <JobDetails userInfo={this.props.userInfo} selectedJob={this.props.selectedJob} handleSaveJob={this.props.handleSaveJob.bind(this)}/> }
                 </div>
             </div>
         )
