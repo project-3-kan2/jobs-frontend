@@ -5,7 +5,7 @@ const SearchResult = (props) => {
     return(
         <div className="search-resualt">
             <div>
-            {props.showProfile === true ? <p className="cursor" onClick={() => props.removeSavedJob(props.job.id)}>X</p> : ''}
+                { props.showProfile ? <p className="cursor" onClick={() => props.removeSavedJob(props.job.id)}>X</p> : '' }
                 <h2 className="job-info" onClick={() => props.setSelectedJob(props.job)}>{props.job.title}</h2>
                 <p>Company: {props.job.company_name}</p>
                 <p>Location: {props.job.job_location}</p>

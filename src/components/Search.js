@@ -11,7 +11,6 @@ class Search extends Component {
     //     }
     // }
 
-    
 
     handleChange(event) {
         const userInput = event.target.value;

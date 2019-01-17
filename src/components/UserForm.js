@@ -16,13 +16,9 @@ class UserForm extends Component {
   handleChange(event) {
     const currentInput = event.target.name;
     const newValue = event.target.value;
-    console.log('current input: ', currentInput);
-    console.log('newValue: ', newValue);
 
     this.setState({
       [currentInput]: newValue
-    }, function () {
-      console.log(this.state);
     })
   }
 
@@ -30,7 +26,6 @@ class UserForm extends Component {
     event.preventDefault();
     this.props.handleFormSubmit(this.state)
   }
-
 
   render() {
     return (
