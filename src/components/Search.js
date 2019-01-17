@@ -32,6 +32,7 @@ class Search extends Component {
         const url2 = `https://authenticjobs.com/api/?api_key=${process.env.Authentic_API}&format=json&method=aj.jobs.search&keywords=${this.state.searchTerm}`
 
         fetch(LookupIP)
+        .then(response => response.json())
         .then(data => {
             console.log(data)
             // currentIp = data.ip;
