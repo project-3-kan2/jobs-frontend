@@ -3,13 +3,15 @@ import SearchResult from './SearchResult';
 import JobDetails from './JobDetails';
 
 class Search extends Component {
-    constructor() {
-        super();
-        this.state = {
-            // searchTerm: '',
-            selectedJob: null
-        }
-    }
+    // constructor() {
+    //     super();
+    //     this.state = {
+    //         // searchTerm: '',
+    //         selectedJob: null
+    //     }
+    // }
+
+    
 
     handleChange(event) {
         const userInput = event.target.value;
