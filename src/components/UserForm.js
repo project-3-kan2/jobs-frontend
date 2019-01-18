@@ -29,8 +29,8 @@ class UserForm extends Component {
 
   render() {
     return (
-      <div className="">
-        <form className="user-form" onSubmit={this.handleSubmit.bind(this)}>
+      <div className="registertion">
+        <form className="registertion" onSubmit={this.handleSubmit.bind(this)}>
           <div className="close-modal" onClick={() => this.props.handleRegister()}>x</div>
           <label>username:</label><input type="text" value={this.state.username} name="username" onChange={this.handleChange.bind(this)} /><br />
           <label>firstname:</label><input type="text" value={this.state.firstname} name="firstname" onChange={this.handleChange.bind(this)} /><br />

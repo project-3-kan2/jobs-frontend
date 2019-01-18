@@ -153,11 +153,13 @@ class Search extends Component {
     render() {
         return(
             <div>
-                <h1>Search For Job</h1>
+                <h1 className="text-bar">Find  available jobs on ..</h1>
+                <h2 className="text-bar2">github and authenticjobs</h2>
                 <div className="search-container">
                     <form className="search-form" onSubmit={this.handleSumbit.bind(this)}>
-                        <input type="text" onChange={this.handleChange.bind(this)}/>
-                        <button><img src="https://i.imgur.com/WX7bym4.png" alt="search"/></button>
+                        <input className = "search-bar" type="text" placeholder="Search For Job" onChange={this.handleChange.bind(this)}/>
+                        <button className="button-search"><img src="https://i.imgur.com/WX7bym4.png" alt="search"/></button>
+                        {/* <img className="img" src="https://slack-imgs.com/?c=1&url=https%3A%2F%2Fi.imgur.com%2F0ZaePDc.jpg" alt="nn"/> */}
                     </form>
                     {this.props.selectedJob === null ? this.renderResults() : <JobDetails userInfo={this.props.userInfo} selectedJob={this.props.selectedJob} handleSaveJob={this.props.handleSaveJob.bind(this)}/> }
                 </div>
