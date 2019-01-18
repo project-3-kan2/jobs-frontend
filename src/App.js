@@ -205,7 +205,7 @@ class App extends Component {
   renderLoginForm() {
     return (
       <div>
-        <form onSubmit={this.handleSubmit.bind(this)}>
+        <form className="login-form" onSubmit={this.handleSubmit.bind(this)}>
           <label>Username: </label>
           <input type="text" placeholder="Enter username" onChange={this.handleChange.bind(this)} />
           <button>Login</button>
