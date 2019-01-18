@@ -2,6 +2,7 @@ import React from "react";
 
 const JobDetails = props => {
   console.log(props.selectedJob)
+  console.log('UUUUUUUUU', props.userInfo)
   return (
     <div>
       {/* <divnclassName="back" onClick={() => {props.setCurrentJob(null);}}>back</div> */}
@@ -12,12 +13,11 @@ const JobDetails = props => {
             <h4>Company: {props.selectedJob.company_name}</h4>
             <h4>Location: {props.selectedJob.job_location}</h4>
             <p>Description: {props.selectedJob.description}</p>  
-        
-        
           
             { props.userInfo === undefined? '' :
-              <button onClick={() => window.open(`${props.selectedJob.job_url}`, "_blank")}>Apply</button>}
-              <button onClick={() => props.handleSaveJob(props.selectedJob)}>Save</button>
+              <button onClick={() => window.open(`${props.selectedJob.job_url}`, "_blank")}>Apply</button>
+            }
+            <button onClick={() => props.handleSaveJob(props.selectedJob)}>Save</button>
          
         </div>
       </div>

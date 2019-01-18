@@ -4,6 +4,7 @@ import Search from './components/Search';
 import UserForm from './components/UserForm';
 import UserProfile from './components/UserProfile';
 import SearchResult from './components/SearchResult';
+import JobDetails from './components/JobDetails';
 
 const API_URL = 'http://localhost:3000/';
 
@@ -104,23 +105,30 @@ class App extends Component {
       })
   }
 
-  renderSavedJob() {
-    return this.state.userSavedJob.map((job, index) => {
-      return <SearchResult key={index}
-                           job={job}
-                           showProfile={this.state.showProfile} 
-                           handleSaveJob={this.handleSaveJob} 
-                           removeSavedJob={this.removeSavedJob.bind(this)}
-                           setSelectedJob={this.setSelectedJob.bind(this)}
-                           />
-    })
-  }
-
   handleSaveJob(job) {
     if (this.state.userInfo === undefined) {
       alert("Plase Login or Register to save and apply to job")
     } else {
       this.insertSavedJob(job)
+    }
+  }
+
+  renderSavedJob() {
+    if(this.state.selectedJob === null) {
+      return this.state.userSavedJob.map((job, index) => {
+        return <SearchResult key={index}
+                             job={job}
+                             showProfile={this.state.showProfile} 
+                             handleSaveJob={this.handleSaveJob} 
+                             removeSavedJob={this.removeSavedJob.bind(this)}
+                             setSelectedJob={this.setSelectedJob.bind(this)}
+                             />
+      })
+    } else {
+      return <JobDetails userInfo={this.state.userInfo} 
+                         selectedJob={this.state.selectedJob} 
+                        //  handleSaveJob={this.state.handleSaveJob.bind(this)}
+                         />
     }
   }
 
