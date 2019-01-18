@@ -263,9 +263,11 @@ class App extends Component {
         <p className="cursor" onClick={() => this.handleLogout()}>Logout</p>
       </div>)
     } else {
-      return( <div className="">
-          <p className="cursor" onClick={() => this.handleRegister()}>Register</p>
-          <p className="cursor" onClick={() => this.setLoginForm()}>Login</p>
+      return( <div className="login"> 
+          <p  >Already have an account?</p>
+          <span className="h6text" >or</span>
+          <p className=" rigister"  onClick={() => this.handleRegister()}>Register</p>
+          <p className="login-buton" onClick={() => this.setLoginForm()}>Login</p>
       </div>)
     }
   }
