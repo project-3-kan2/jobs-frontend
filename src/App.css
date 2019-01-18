@@ -3,7 +3,8 @@
     height: 200px;
 }
 
-.job-info , .cursor{
+.job-info,
+.cursor {
     cursor: pointer;
 }
 
@@ -11,97 +12,104 @@
     display: flex;
     justify-content: space-around
 }
-body{
+
+body {
     position: fixed;
     width: 1500px;
     height: 1093px;
-    
     background: #B0C4DE;
-    mix-blend-mode: normal;
-    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);  
-
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     
 }
 
 
 /* this for search result page to display (search-resualt,logo,content) company logo and job title and location */
-.search-resualt{
-   display:flex;
- flex-direction: row;
-
-} 
-
- 
-.logo{
+.search-resualt {
     display: flex;
-    padding:50px;
+    flex-direction: row;
+
 }
- .content{
-    flex:column;
-  flex-direction: column;
-  text-align: left
-} 
 
 
-
-.search-resualt > .save-job{
-text-align: right;
-padding-top: 180px;    
+.logo {
+    display: flex;
+    padding: 50px;
 }
-.logo{
+
+.content {
+    flex: column;
+    flex-direction: column;
+    text-align: left
+}
+
+
+
+.search-resualt>.save-job {
+    text-align: right;
+    padding-top: 180px;
+}
+
+.logo {
     position: absolute;
     width: 509px;
     height: 511px;
     left: -159px;
     top: -49px;
 }
+
 /* landpage "find a job " sentence */
-.text-bar{
+.text-bar {
     position: absolute;
-    width: 700px;
-    height: 60px;
-    left: 450px;
+    width: 900px;
+    height: 70px;
+    left: 500px;
     top: 370px;
 }
 
 /* landpage "github and authenticjobs " sentence */
-.text-bar2{
+.text-bar2 {
     position: absolute;
     width: 700px;
     height: 60px;
-    left: 480px;
+    left: 500px;
     top: 410px;
 }
-.button-search{
-    
+
+.button-search {
+
     position: absolute;
     width: 0px;
     height: 0px;
     left: 1100px;
     top: 430px;
-    
+
 }
 
 /* logo img  */
-.img{
+.img {
     position: absolute;
-    width: 400px;
-    height: 600px;
-    left: -120px;
-    top: -30px;
+    width: 220px;
+    height: 320px;
+    left: -20px;
+    top: 0px;
+    margin: 0;
 
 }
+
 /* search bar postion */
-.search-bar{
+.search-bar {
     position: absolute;
     width: 700px;
     height: 60px;
     left: 400px;
     top: calc(50% - 106px/2 - 34.5px);
-    background: #FFFFFF; 
+    background: #FFFFFF;
     font-size: 30px;
 }
-.search-icon{
+
+.search-icon {
     /* position: absolute;
 width: 138px;
 height: 147px;
@@ -119,92 +127,130 @@ text-indent: 47px;
 color: #FFFDFD; */
 
 }
-.home-text{
+
+.home-text {
     position: absolute;
-width: 1493px;
-height: 135px;
-left: 0px;
-top: 313px;
+    width: 1493px;
+    height: 135px;
+    left: 0px;
+    top: 313px;
 
-font-family: Roboto;
-font-style: normal;
-font-weight: 500;
-line-height: normal;
-font-size: 64px;
-text-align: center;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    font-size: 64px;
+    text-align: center;
 
-color: #000000;
-}
-.login{
-position: absolute;
-width: 995px;
-height: 103px;
-left: 200px;
-top: 39px;
-
-font-family: Roboto;
-font-style: normal;
-font-weight: 500;
-line-height: normal;
-font-size: 40px;
-text-align: center;
-
-color: #FFFFFF;
+    color: #000000;
 }
 
-/* postion "login" word in landpage */
-.login-buton{
-position: absolute;
-width: 271px;
-height: 45px;
-left: 640px;
-top: 0px;
-
-font-family: Roboto;
-font-style: normal;
-font-weight: 500;
-line-height: normal;
-font-size: 40px;
-text-align: center;
-
-color: #21273D;
-}
-/* postion "or" word in landpage */
-.h6text{
+.login {
     position: absolute;
-    width: 271px;
-    height: 45px;
-    left: 730px;
-    top: 40px;
-    
+    width: 995px;
+    height: 103px;
+    left: 200px;
+    top: 39px;
+
     font-family: Roboto;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
     font-size: 40px;
     text-align: center;
-    
-    color:white;
+
+    color: #FFFFFF;
 }
-.rigister{
-position: absolute;
-width: 271px;
-height: 45px;
-left: 830px;
-top: 0px;
 
-font-family: Roboto;
-font-style: normal;
-font-weight: 500;
-line-height: normal;
-font-size: 40px;
-text-align: center;
+/* postion "login" word in landpage */
+.login-buton {
+    position: absolute;
+    width: 271px;
+    height: 45px;
+    left: 640px;
+    top: 0px;
 
-color: #21273D;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    font-size: 40px;
+    text-align: center;
+
+    color: #21273D;
+}
+/* make login form in center and change font , size  */
+.login-form {
+    position: fixed;
+    margin: 140px 500px 100px 0;
+    right: 15px;
+    padding: 10px;
+    z-index: 9;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    font-size: 30px;
+}
+
+.login-form>button {
+    font-family: Roboto;
+    font-style: normal;
+    line-height: normal;
+    width: 70px;
+    height: 40px;
+    font-size: 20px;
+    background-color: #21273D;
+    color: white;
+    text-align: center;
+    border-style: none;
+    
+    
+}
+.login-form > input{
+    font-family: Roboto;
+    width: 190px;
+    height: 30px;
+    font-size: 20px;
+}
+
+/* postion "or" word in landpage */
+.h6text {
+    position: absolute;
+    width: 271px;
+    height: 45px;
+    left: 730px;
+    top: 40px;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    font-size: 40px;
+    text-align: center;
+
+    color: white;
+}
+
+.rigister {
+    position: absolute;
+    width: 271px;
+    height: 45px;
+    left: 830px;
+    top: 0px;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    font-size: 40px;
+    text-align: center;
+
+    color: #21273D;
 }
 
 /* added a pop up sing up page */
-.registertion{
+.registertion {
     z-index: 10;
     text-align: center;
     position: absolute;
@@ -213,22 +259,87 @@ color: #21273D;
     height: 30%;
     width: 15%;
     background-color: #697499;
-  
+
 }
 
-.login > h6{
+.login>h6 {
     position: absolute;
     width: 995px;
     height: 103px;
     left: 350px;
     top: 0px;
-    
+
     font-family: Roboto;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
     font-size: 48px;
     text-align: center;
-    
+
     color: #FFFFFF;
+}
+/* render profile info container , info , edit button */
+.show-profile{
+position: absolute;
+width: 1000px;
+height: 199px;
+left: 194px;
+top: calc(50% - 199px/2 - 409px);
+border: #697499 solid 1px;
+
+background: #B0C4DE;
+mix-blend-mode: normal;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+
+.show-profile > h4{
+    margin: 10px 20px;
+    padding: 20px; 
+ float: left;
+font-family: Roboto;
+font-style: normal;
+font-weight: 300;
+line-height: normal;
+font-size: 27px;
+
+color: #FFF9F9;
+
+
+}
+.show-profile > button {
+    margin: 140px 20px;
+    width: 100px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 100;
+    line-height: normal;
+    font-size: 25px;
+    background-color: whitesmoke;
+    
+}
+
+.job-details {
+position: absolute;
+width: 1160px;
+height: 1000px;
+left: 251px;
+top: 400px;
+background: #697499;
+}
+.job-details > button {
+    position: absolute;
+    width: 580px;
+    height: 86px;
+    left: 256px;
+    top: 2000px;
+    background: #FFFDFD;
+    border: 1px solid #FFFFFF;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.job-details > img {
+    width: 100px;
+    height: 100px;
+   margin: 0px 100px 0 50px;
 }
