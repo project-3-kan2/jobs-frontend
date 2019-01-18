@@ -152,7 +152,7 @@ class Search extends Component {
 
     render() {
         return(
-            <div>
+               <div>
                 <h1 className="text-bar">Find  available jobs on ..</h1>
                 <h2 className="text-bar2">github and authenticjobs</h2>
                 <div className="search-container">
@@ -164,6 +164,7 @@ class Search extends Component {
                     {this.props.selectedJob === null ? this.renderResults() : <JobDetails userInfo={this.props.userInfo} selectedJob={this.props.selectedJob} handleSaveJob={this.props.handleSaveJob.bind(this)}/> }
                 </div>
             </div>
+
         )
     }
 }
