@@ -209,6 +209,10 @@ class App extends Component {
           userForm: false
          })
       })
+      .catch(error => {
+        console.log('createNewUser Error: ', error)
+        alert("Tnis username or email is Registerd.");
+      })
   }
 
   //This function will render the log-in form it the login is true
