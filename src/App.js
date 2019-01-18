@@ -76,8 +76,6 @@ class App extends Component {
       this.setState({
         userSavedJob: data
       })
-      console.log('$$$$$$$$$$$$$$$$TTTTTTTTTTTTTTT', this.state.userSavedJob)
-
     })
     .catch(error => {
       console.log('App.js handleUserSavedJob function: ', error);
