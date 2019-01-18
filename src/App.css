@@ -286,9 +286,9 @@ color: #21273D;
 /* postion logout  */
 .cursor-logout{
     position: absolute;
-    width: 271px;
+    width: 171px;
     height: 45px;
-    left: 1000px;
+    left: 1060px;
     top: 0px;
     color:white;
     font-family: Roboto;

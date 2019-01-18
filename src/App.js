@@ -258,7 +258,8 @@ class App extends Component {
       return(<div>
         <p className="cursor-username" onClick={() => this.setUserProfile()}>{this.state.userInfo.username}</p>
         <p className="cursor-logout" onClick={() => this.handleLogout()}>Logout</p>
-      </div>)
+      </div>
+      )
     } else {
       return( <div className="login"> 
           <p  >Already have an account?</p>
