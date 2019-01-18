@@ -256,8 +256,8 @@ class App extends Component {
   renderNavButton() {
     if(this.state.userInfo) {
       return(<div>
-        <p className="cursor" onClick={() => this.setUserProfile()}>{this.state.userInfo.username}</p>
-        <p className="cursor" onClick={() => this.handleLogout()}>Logout</p>
+        <p className="cursor-username" onClick={() => this.setUserProfile()}>{this.state.userInfo.username}</p>
+        <p className="cursor-logout" onClick={() => this.handleLogout()}>Logout</p>
       </div>)
     } else {
       return( <div className="login"> 

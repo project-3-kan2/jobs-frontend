@@ -1,6 +1,9 @@
 .company-logo {
-    width: 300px;
-    height: 200px;
+    position: absolute;
+    width: 157px;
+    height: 204px;
+    left: 62px;
+    top: 50px;
 }
 
 .job-info,
@@ -13,10 +16,12 @@
     justify-content: space-around
 }
 
+
 body {
     position: fixed;
     width: 1500px;
     height: 1093px;
+
     background: #B0C4DE;
     background-position: center;
     background-repeat: no-repeat;
@@ -33,7 +38,86 @@ body {
 }
 
 
-.logo {
+.Job-resualt{
+    position: absolute;
+    width: 960px;
+    height: 360px;
+    left: 167px;
+    top: 580px;
+    
+    background: #697499;
+    }
+    .Job-resualt  .job-info{
+        position: absolute;
+        width: 677px;
+        height: 64px;
+        left: 252px;
+        top: -30px;
+        
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        font-size: 48px;
+        text-align: center;
+        
+        color: #FFFDFD;
+        
+        
+        }
+        
+    .savebutton{
+        position: absolute;
+    width: 960px;
+    height: 86px;
+    left: 2px;
+    top: 360px;
+    font-size: 30px;
+    background: #FFFDFD;
+    border: 1px solid #FFFFFF;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+    
+.job-location{
+    position: absolute;
+width: 277px;
+height: 164px;
+left: 222px;
+top: 100px;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+font-size: 28px;
+text-align: center;
+
+color: #21273D;   
+}
+
+.job-title{
+    position: absolute;
+width: 277px;
+height: 164px;
+left: 282px;
+top: 150px;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+font-size: 38px;
+text-align: center;
+
+color: #21273D;
+}
+
+
+
+ 
+.logo{
+
     display: flex;
     padding: 50px;
 }
@@ -104,8 +188,11 @@ body {
     width: 700px;
     height: 60px;
     left: 400px;
-    top: calc(50% - 106px/2 - 34.5px);
-    background: #FFFFFF;
+
+    top: 470px;
+    background: #FFFFFF; 
+
+
     font-size: 30px;
 }
 
@@ -249,6 +336,38 @@ color: #FFFDFD; */
     color: #21273D;
 }
 
+/* postion logout  */
+.cursor-logout{
+    position: absolute;
+    width: 271px;
+    height: 45px;
+    left: 1000px;
+    top: 0px;
+    color:white;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    font-size: 40px;
+    text-align: center;
+    }
+    .cursor-username{
+        position: absolute;
+        width: 271px;
+        height: 45px;
+        left: 880px;
+        top: 0px;
+        
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        font-size: 40px;
+        text-align: center; 
+    }
+    
+
+
 /* added a pop up sing up page */
 .registertion {
     z-index: 10;
@@ -256,8 +375,8 @@ color: #FFFDFD; */
     position: absolute;
     left: 20%;
     top: 20%;
-    height: 30%;
-    width: 15%;
+    height: 43%;
+    width: 25%;
     background-color: #697499;
 
 }
