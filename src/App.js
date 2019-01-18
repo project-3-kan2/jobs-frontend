@@ -55,7 +55,6 @@ class App extends Component {
     fetch(`${API_URL}user/${this.state.username}`)
       .then(response => response.json())
       .then(data => {
-        console.log('YYYYY',data);
         this.setState({
           userInfo: data,
           loginForm: false
@@ -145,13 +144,7 @@ class App extends Component {
     })
       .then(response => response.json())
       .then(data => {
-        console.log('DATA')
-        console.log(data);
         const index = this.state.results.indexOf(savedJob);
-        console.log("index", index);
-        // const {results} = this.state; 
-        // results.slice(index, 1); 
-        // console.log('## RRR', results.slice(index, 1))
         const updatedResult = this.state.results.filter((el, i) => i !== index)
         this.setState({ 
           results: updatedResult,
