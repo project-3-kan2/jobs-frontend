@@ -154,7 +154,7 @@ class Search extends Component {
         return(
             <div>
                 <h1 className="text-bar">Find  available jobs on ..</h1>
-                <h2 className="text-bar2">github and authenticjobs</h2>
+                <h2 className="text-bar2">github , authenticjobs and indeed</h2>
                 <div className="search-container">
                     <form className="search-form" onSubmit={this.handleSumbit.bind(this)}>
                         <input className = "search-bar" type="text" placeholder="Search For Job" onChange={this.handleChange.bind(this)}/>
