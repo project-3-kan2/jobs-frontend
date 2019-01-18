@@ -145,11 +145,6 @@ class Search extends Component {
         })
     }
 
-    // changr the state of the selectedjob when user click on the job
-    // setSelectedJob(activeJob) {
-    //     this.props.setSelectedJob(activeJob)
-    // }
-
     render() {
         return(
                <div>
