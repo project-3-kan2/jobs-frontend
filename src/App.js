@@ -110,7 +110,9 @@ class App extends Component {
                            job={job}
                            showProfile={this.state.showProfile} 
                            handleSaveJob={this.handleSaveJob} 
-                           removeSavedJob={this.removeSavedJob.bind(this)}/>
+                           removeSavedJob={this.removeSavedJob.bind(this)}
+                           setSelectedJob={this.setSelectedJob.bind(this)}
+                           />
     })
   }
 
@@ -233,7 +235,10 @@ class App extends Component {
   }
 
   renderUserProfile(){
-    return <UserProfile user={this.state.userInfo} handleRegister={this.handleRegister.bind(this)} renderSavedJob={this.renderSavedJob.bind(this)}/>
+    return <UserProfile user={this.state.userInfo} 
+                        handleRegister={this.handleRegister.bind(this)} 
+                        renderSavedJob={this.renderSavedJob.bind(this)}
+                        />
   }
 
   handleLogout() {
