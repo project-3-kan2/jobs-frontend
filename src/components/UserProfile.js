@@ -12,8 +12,7 @@ const UserProfile = (props) => {
 
              <button onClick={() => props.handleRegister()}>Edit</button>
           </div>
-          <div>
-             
+          <div>    
               <div>
                 {props.renderSavedJob()}
               </div>
