@@ -15,7 +15,7 @@ body {
     margin-top: 22px;
     margin: 0 auto;
     margin-top: 22px;
-    width: 700px;
+    width: 1000px;
     display: flex;
     flex-direction: row
 }
@@ -29,7 +29,7 @@ body {
     width: 100px;
 }
 
-.media-body>button {
+.media-body >button {
     width: 100%;
     background-color: white;
     color: #21273D;
@@ -223,3 +223,14 @@ nav {
     color: black;
     }
     
+    .row {
+        display: flex;
+        flex-direction: row;
+
+    }
+    .row > button{
+        display: flex;
+        background-color: white;
+        color: #21273D;
+        flex-direction: row;
+    }
