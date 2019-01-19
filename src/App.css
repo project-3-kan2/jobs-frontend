@@ -1,36 +1,51 @@
-.app{
-    background-color:#B0C4DE;
+.app {
+    background-color: #B0C4DE;
     position: absolute;
     width: 100vw;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    
+
 }
-.media{
+
+body {
+    background-color: #B0C4DE !important;
+}
+
+.media {
     background-color: #697499;
     margin-top: 22px;
     margin: 0 auto;
     margin-top: 22px;
     width: 700px;
-    
-}
-.media-body > img {
-    height: 100px;
-    width: 100px;
-    left: 10px;
-    top:10px;
-    
-}
-.media-body > button {
-width: 100%;
-background-color: white;
-color: #21273D;
+    display: flex;
+    flex-direction: row;
+
 }
 
-.media-body > h5{
-    text-align: center;
+
+.col-sm .image {
+    
+    text-align: right;
 }
-.media-body > p{
-text-align: right;
+
+.col-sm img {
+    height: 100px;
+    width: 100px;
+}
+
+.media-body>button {
+    width: 100%;
+    background-color: white;
+    color: #21273D;
+}
+
+.media-body>h5 {
+    text-align: center;
+    color: white;
+}
+
+.media-body>p {
+    text-align: center;
+
 }
