@@ -241,6 +241,7 @@ class App extends Component {
     return <UserProfile user={this.state.userInfo} 
                         handleRegister={this.handleRegister.bind(this)} 
                         renderSavedJob={this.renderSavedJob.bind(this)}
+                        setUserProfile={this.setUserProfile.bind(this)}
                         />
   }
 
@@ -257,7 +258,7 @@ class App extends Component {
   }
 
   setUserProfile() {
-    this.setState({ showProfile: true})
+    this.setState({ showProfile: !this.state.showProfile})
     this.handleUserSavedJob(this.state.userInfo);
   }
 

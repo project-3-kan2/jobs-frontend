@@ -3,6 +3,7 @@ import React from 'react';
 const UserProfile = (props) => {
     return(
         <div>
+          <div className="cursor" onClick={() => { props.setUserProfile() }}>back</div>
           <div className="show-profile">
               <h4>Username: {props.user.username}</h4>
               <h4>First Name: {props.user.firstname}</h4>
