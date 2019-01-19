@@ -1,6 +1,6 @@
 import React from "react";
 
-// Functional componenrt wilol render the selectedJob in this format 
+// Functional componenrt will render the selectedJob in this format 
 const JobDetails = props => {
   return (
     <div>
