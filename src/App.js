@@ -5,6 +5,7 @@ import UserForm from './components/UserForm';
 import UserProfile from './components/UserProfile';
 import SearchResult from './components/SearchResult';
 import JobDetails from './components/JobDetails';
+import swal from '../node_modules/sweetalert';
 
 const API_URL = 'http://localhost:3000/';
 
@@ -55,7 +56,6 @@ class App extends Component {
     fetch(`${API_URL}user/${this.state.username}`)
       .then(response => response.json())
       .then(data => {
-        console.log('YYYYY',data);
         this.setState({
           userInfo: data,
           loginForm: false
@@ -63,7 +63,7 @@ class App extends Component {
       })
       .catch(error => {
         console.log('App.js handleSubmit function: ', error);
-        alert("This username NOT Register");
+        swal("This username NOT Registered");
       })
     console.log(this.state.userInfo);
   }
@@ -76,12 +76,10 @@ class App extends Component {
       this.setState({
         userSavedJob: data
       })
-      console.log('$$$$$$$$$$$$$$$$TTTTTTTTTTTTTTT', this.state.userSavedJob)
-
     })
     .catch(error => {
       console.log('App.js handleUserSavedJob function: ', error);
-      alert("register plz");
+      swal("register plz");
     })
   }
 
@@ -107,7 +105,7 @@ class App extends Component {
 
   handleSaveJob(job) {
     if (this.state.userInfo === undefined) {
-      alert("Plase Login or Register to save and apply to job")
+      swal("Plase Login or Register to save and apply to job")
     } else {
       this.insertSavedJob(job)
     }
@@ -127,7 +125,7 @@ class App extends Component {
     } else {
       return <JobDetails userInfo={this.state.userInfo} 
                          selectedJob={this.state.selectedJob} 
-                        //  handleSaveJob={this.state.handleSaveJob.bind(this)}
+                         handleSaveJob={this.handleSaveJob.bind(this)}
                          />
     }
   }
@@ -147,13 +145,7 @@ class App extends Component {
     })
       .then(response => response.json())
       .then(data => {
-        console.log('DATA')
-        console.log(data);
         const index = this.state.results.indexOf(savedJob);
-        console.log("index", index);
-        // const {results} = this.state; 
-        // results.slice(index, 1); 
-        // console.log('## RRR', results.slice(index, 1))
         const updatedResult = this.state.results.filter((el, i) => i !== index)
         this.setState({ 
           results: updatedResult,
@@ -209,6 +201,10 @@ class App extends Component {
           userForm: false
          })
       })
+      .catch(error => {
+        console.log('createNewUser Error: ', error)
+        swal("Tnis username or email is Registerd.");
+      })
   }
 
   //This function will render the log-in form it the login is true
@@ -246,6 +242,7 @@ class App extends Component {
     return <UserProfile user={this.state.userInfo} 
                         handleRegister={this.handleRegister.bind(this)} 
                         renderSavedJob={this.renderSavedJob.bind(this)}
+                        setUserProfile={this.setUserProfile.bind(this)}
                         />
   }
 
@@ -262,7 +259,7 @@ class App extends Component {
   }
 
   setUserProfile() {
-    this.setState({ showProfile: true})
+    this.setState({ showProfile: !this.state.showProfile})
     this.handleUserSavedJob(this.state.userInfo);
   }
 
@@ -271,7 +268,8 @@ class App extends Component {
       return(<div>
         <p className="cursor-username" onClick={() => this.setUserProfile()}>{this.state.userInfo.username}</p>
         <p className="cursor-logout" onClick={() => this.handleLogout()}>Logout</p>
-      </div>)
+      </div>
+      )
     } else {
       return( <div className="login"> 
           <p  >Already have an account?</p>

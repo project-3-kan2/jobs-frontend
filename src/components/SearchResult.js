@@ -1,5 +1,6 @@
 import React from 'react';
 
+//This functional component will render the result state in this format
 const SearchResult = (props) => {
 
     return (
@@ -24,9 +25,7 @@ const SearchResult = (props) => {
                 </div>
             </div>
         </div>
-
     )
 }
 
 export default SearchResult;
-
