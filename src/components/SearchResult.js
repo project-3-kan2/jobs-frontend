@@ -8,7 +8,7 @@ const SearchResult = (props) => {
             <div className="card-body">
                 <div className="row">
                     <div className="col-sm">
-                        <h5 onClick={() => props.setSelectedJob(props.job)}>{props.job.title} </h5>
+                        <h5 className="cursor" onClick={() => props.setSelectedJob(props.job)}>{props.job.title} </h5>
                         {props.showProfile ? <p onClick={() => props.removeSavedJob(props.job.id)}>X</p> : ''}
                         <p className="card-text"> {props.job.company_name}</p>
                         {/* <h2 className="job-info" onClick={() => props.setSelectedJob(props.job)}>{props.job.title}</h2> */}
