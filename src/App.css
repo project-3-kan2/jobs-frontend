@@ -1,12 +1,6 @@
-.company-logo {
-    position: absolute;
-    width: 157px;
-    height: 204px;
-    left: 62px;
-    top: 50px;
-}
 
-.job-info,
+
+
 .cursor {
     cursor: pointer;
 }
@@ -18,15 +12,15 @@
 
 
 body {
-    position: fixed;
-    width: 1500px;
-    height: 1093px;
 
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
     background: #B0C4DE;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    
+
 }
 
 
@@ -36,111 +30,112 @@ body {
     flex-direction: row;
 
 }
+.res-cont{
+    display: flex;
 
+}
 
-.Job-resualt{
-    position: absolute;
-    width: 960px;
-    height: 360px;
-    left: 167px;
-    top: 580px;
-    
+.job-result {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+    /* padding: 80px; */
+    margin-top: 60vh;
+    font-size: 40px;
+    border-radius: 8px;
     background: #697499;
-    }
-    .Job-resualt  .job-info{
-        position: absolute;
-        width: 677px;
+}
+
+.job-info {
+    /* position: absolute; */
+    /* width: 677px;
         height: 64px;
         left: 252px;
-        top: -30px;
-        
-        font-family: Roboto;
-        font-style: normal;
-        font-weight: 500;
-        line-height: normal;
-        font-size: 48px;
-        text-align: center;
-        
-        color: #FFFDFD;
-        
-        
-        }
-        
-    .savebutton{
-        position: absolute;
-    width: 960px;
-    height: 86px;
-    left: 2px;
-    top: 360px;
+        top: -30px; */
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    font-size: 30px;
+    text-align: center;
+
+    color: #FFFDFD;
+
+
+}
+
+.savebutton {
+    /* position: absolute; */
+    width: 700px;
+    height: 40px;
+    /* left: 2px; */
+    /* top: 360px; */
     font-size: 30px;
     background: #FFFDFD;
     border: 1px solid #FFFFFF;
     box-sizing: border-box;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    }
-    
-.job-location{
-    position: absolute;
+    border-radius: 8px;
+}
+
+.job-location {
+    /* position: absolute;
 width: 277px;
-height: 164px;
-left: 222px;
-top: 100px;
+height: 164px; */
+    left: 222px;
+    top: 100px;
 
-font-family: Roboto;
-font-style: normal;
-font-weight: 500;
-line-height: normal;
-font-size: 28px;
-text-align: center;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    font-size: 28px;
+    text-align: center;
 
-color: #21273D;   
+    color: #21273D;
 }
 
-.job-title{
-    position: absolute;
+.job-title {
+    /* position: absolute;
 width: 277px;
-height: 164px;
-left: 282px;
-top: 150px;
+height: 164px; */
+    left: 282px;
+    top: 150px;
 
-font-family: Roboto;
-font-style: normal;
-font-weight: 500;
-line-height: normal;
-font-size: 38px;
-text-align: center;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    font-size: 30px;
+    text-align: center;
 
-color: #21273D;
+    color: #21273D;
 }
 
 
 
- 
-.logo{
-
-    display: flex;
-    padding: 50px;
-}
-
-.content {
+/* .content {
     flex: column;
     flex-direction: column;
     text-align: left
-}
+} */
 
 
 
-.search-resualt>.save-job {
+.save-job {
     text-align: right;
-    padding-top: 180px;
+    padding: 0px;
+    /* padding-top: 180px; */
 }
 
-.logo {
-    position: absolute;
-    width: 509px;
-    height: 511px;
-    left: -159px;
-    top: -49px;
+.company-logo {
+    width: 225px;
+    height: 225px;
+    margin: 0px 800px 70px 100px;
+
 }
 
 /* landpage "find a job " sentence */
@@ -190,30 +185,13 @@ color: #21273D;
     left: 400px;
 
     top: 470px;
-    background: #FFFFFF; 
+    background: #FFFFFF;
 
 
     font-size: 30px;
 }
 
-.search-icon {
-    /* position: absolute;
-width: 138px;
-height: 147px;
-left: 1364px;
-top: 463px;
 
-font-family: FontAwesome;
-font-style: normal;
-font-weight: normal;
-line-height: normal;
-font-size: 96px;
-text-align: center;
-text-indent: 47px;
-
-color: #FFFDFD; */
-
-}
 
 .home-text {
     position: absolute;
@@ -266,6 +244,7 @@ color: #FFFDFD; */
 
     color: #21273D;
 }
+
 /* make login form in center and change font , size  */
 .login-form {
     position: fixed;
@@ -280,7 +259,7 @@ color: #FFFDFD; */
     font-size: 30px;
 }
 
-.login-form>button {
+.login-form > button {
     font-family: Roboto;
     font-style: normal;
     line-height: normal;
@@ -291,10 +270,11 @@ color: #FFFDFD; */
     color: white;
     text-align: center;
     border-style: none;
-    
-    
+
+
 }
-.login-form > input{
+
+.login-form>input {
     font-family: Roboto;
     width: 190px;
     height: 30px;
@@ -337,35 +317,36 @@ color: #FFFDFD; */
 }
 
 /* postion logout  */
-.cursor-logout{
+.cursor-logout {
     position: absolute;
     width: 271px;
     height: 45px;
     left: 1000px;
     top: 0px;
-    color:white;
+    color: white;
     font-family: Roboto;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
     font-size: 40px;
     text-align: center;
-    }
-    .cursor-username{
-        position: absolute;
-        width: 271px;
-        height: 45px;
-        left: 880px;
-        top: 0px;
-        
-        font-family: Roboto;
-        font-style: normal;
-        font-weight: 500;
-        line-height: normal;
-        font-size: 40px;
-        text-align: center; 
-    }
-    
+}
+
+.cursor-username {
+    position: absolute;
+    width: 271px;
+    height: 45px;
+    left: 880px;
+    top: 0px;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    font-size: 40px;
+    text-align: center;
+}
+
 
 
 /* added a pop up sing up page */
@@ -397,36 +378,38 @@ color: #FFFDFD; */
 
     color: #FFFFFF;
 }
+
 /* render profile info container , info , edit button */
-.show-profile{
-position: absolute;
-width: 1000px;
-height: 199px;
-left: 194px;
-top: calc(50% - 199px/2 - 409px);
-border: #697499 solid 1px;
+.show-profile {
+    position: absolute;
+    width: 1000px;
+    height: 199px;
+    left: 194px;
+    top: calc(50% - 199px/2 - 409px);
+    border: #697499 solid 1px;
 
-background: #B0C4DE;
-mix-blend-mode: normal;
-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    background: #B0C4DE;
+    mix-blend-mode: normal;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 
-.show-profile > h4{
+.show-profile>h4 {
     margin: 10px 20px;
-    padding: 20px; 
- float: left;
-font-family: Roboto;
-font-style: normal;
-font-weight: 300;
-line-height: normal;
-font-size: 27px;
+    padding: 20px;
+    float: left;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    font-size: 27px;
 
-color: #FFF9F9;
+    color: #FFF9F9;
 
 
 }
-.show-profile > button {
+
+.show-profile>button {
     margin: 140px 20px;
     width: 100px;
     font-family: Roboto;
@@ -435,30 +418,58 @@ color: #FFF9F9;
     line-height: normal;
     font-size: 25px;
     background-color: whitesmoke;
-    
+
 }
 
 .job-details {
-position: absolute;
-width: 1160px;
-height: 1000px;
-left: 251px;
-top: 400px;
-background: #697499;
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+    padding: 80px;
+    margin-top: 60vh;
+    font-size: 40px;
+    border-radius: 8px;
+    background: #697499;
 }
-.job-details > button {
-    position: absolute;
-    width: 580px;
-    height: 86px;
-    left: 256px;
-    top: 2000px;
+
+.job-details> button {
+   width:100%;
+   height: 40px;
     background: #FFFDFD;
     border: 1px solid #FFFFFF;
     box-sizing: border-box;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column-reverse;
+    border-radius: 8px;
 }
-.job-details > img {
-    width: 100px;
-    height: 100px;
-   margin: 0px 100px 0 50px;
+
+.job-details> img {
+    width: 225px;
+    height: 225px;
+    margin: 0px 100px 0 50px;
+}
+.job-details > h2 {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    font-size: 30px;
+    text-align: center;
+    color: #FFFDFD;
+
+}
+.job-details > h4 {
+    float: left;
+    color: #21273D;
+    font-family: Roboto;
+    font-size: 20px;
+    top:77px
+
+}
+.job-details > p {
+    color: #21273D;
+    font-family: Roboto;
+    font-size: 20px;
+    top:300px
 }

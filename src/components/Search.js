@@ -154,7 +154,7 @@ class Search extends Component {
                     <form className="search-form" onSubmit={this.handleSumbit.bind(this)}>
                         <input className = "search-bar" type="text" placeholder="Search For Job" onChange={this.handleChange.bind(this)}/>
                         <button className="button-search"><img src="https://i.imgur.com/WX7bym4.png" alt="search"/></button>
-                        {/* <img className="img" src="https://slack-imgs.com/?c=1&url=https%3A%2F%2Fi.imgur.com%2F0ZaePDc.jpg" alt="nn"/> */}
+                        <img className="img" src="https://slack-imgs.com/?c=1&url=https%3A%2F%2Fi.imgur.com%2F0ZaePDc.jpg" alt=""/>
                     </form>
                     {this.props.selectedJob === null ? this.renderResults() : <JobDetails userInfo={this.props.userInfo} selectedJob={this.props.selectedJob} handleSaveJob={this.props.handleSaveJob.bind(this)}/> }
                 </div>
