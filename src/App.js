@@ -63,7 +63,10 @@ class App extends Component {
       })
       .catch(error => {
         console.log('App.js handleSubmit function: ', error);
-        swal("This username NOT Registered");
+        swal({
+          title: "This username NOT Registered",
+          icon: "warning"
+        });
       })
     console.log(this.state.userInfo);
   }
@@ -105,7 +108,10 @@ class App extends Component {
 
   handleSaveJob(job) {
     if (this.state.userInfo === undefined) {
-      swal("Plase Login or Register to save and apply to job")
+      swal({
+        title: "Plase Login or Register to save and apply to job",
+        icon: "warning"
+      });
     } else {
       this.insertSavedJob(job)
     }
