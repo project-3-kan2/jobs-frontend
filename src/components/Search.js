@@ -7,7 +7,8 @@ class Search extends Component {
     // handle the user input term in the search bar
     handleChange(event) {
         const userInput = event.target.value;
-        this.props.setSearchTerm(userInput)
+        const updateSearchTerm = userInput.split(' ').join('+');
+        this.props.setSearchTerm(updateSearchTerm);
     }
 
     // handle the sumbit of the search bar 
@@ -17,7 +18,7 @@ class Search extends Component {
         this.props.handleResults([]);
 
         const LookupIP = 'https://ipapi.co/json/';
-        const url1 = `https://jobs.github.com/positions.json?description=${this.props.searchTerm}&search=node`
+        const url1 = `https://jobs.github.com/positions.json?description=${this.props.searchTerm}`
         const url2 = `https://authenticjobs.com/api/?api_key=e2da8aacbfce53f1e1b9559409a51691&format=json&method=aj.jobs.search&keywords=${this.props.searchTerm}`
 
         fetch(url1)
