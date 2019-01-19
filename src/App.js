@@ -241,7 +241,10 @@ class App extends Component {
   }
 
   renderUserForm() {
-    return <UserForm userInfo={this.state.userInfo} handleFormSubmit={this.handleFormSubmit.bind(this)} handleRegister={this.handleRegister.bind(this)} />
+    return <UserForm userInfo={this.state.userInfo} 
+                     handleFormSubmit={this.handleFormSubmit.bind(this)} 
+                     handleRegister={this.handleRegister.bind(this)} 
+                     />
   }
 
   renderUserProfile(){
@@ -278,10 +281,10 @@ class App extends Component {
       )
     } else {
       return( <div className="d-inline-flex p-2  nav-info"> 
-          <p  >Already have an account?</p>
+          <p>Already have an account?</p>
           <p onClick={() => this.handleRegister()}>Register</p>
-          <span  >or</span>
-          <p  onClick={() => this.setLoginForm()}>Login</p>
+          <span>or</span>
+          <p onClick={() => this.setLoginForm()}>Login</p>
       </div>)
     }
   }
@@ -289,14 +292,10 @@ class App extends Component {
   render() {
     return (
       <div className="app">
-<nav className="navbar navbar-light ">
-
-<img className="d-inline-block align-top"  width="200" height="250" src="https://slack-imgs.com/?c=1&url=https%3A%2F%2Fi.imgur.com%2F0ZaePDc.jpg" alt="" />
-      {this.renderNavButton()}
-</nav>
-
-     
-     
+          <nav className="navbar navbar-light ">
+              <img className="d-inline-block align-top"  width="200" height="250" src="https://slack-imgs.com/?c=1&url=https%3A%2F%2Fi.imgur.com%2F0ZaePDc.jpg" alt="" />
+              {this.renderNavButton()}
+          </nav>
         {this.state.loginForm ? this.renderLoginForm() : ''}
         {this.state.userForm ? this.renderUserForm() : ''}
         {this.state.showProfile ? this.renderUserProfile() : 

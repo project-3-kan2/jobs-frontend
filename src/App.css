@@ -19,10 +19,8 @@ body {
     margin-top: 22px;
     width: 700px;
     display: flex;
-    flex-direction: row;
-
+    flex-direction: row
 }
-
 
 .col-sm .image {
     
@@ -47,7 +45,6 @@ body {
 
 .media-body>p {
     text-align: center;
-
 }
 
 .nav-info > p , span {
@@ -58,12 +55,13 @@ body {
     line-height: normal;
     font-size: 30px;
 }
+
 nav {
     background-color: #B0C4DE !important;
 }
+
 .search{
     margin:200px 40px 0 40px;
     font-family: Roboto;
     text-align: center; 
-   
 }
