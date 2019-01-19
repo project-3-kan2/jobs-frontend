@@ -7,7 +7,8 @@ class Search extends Component {
     // handle the user input term in the search bar
     handleChange(event) {
         const userInput = event.target.value;
-        this.props.setSearchTerm(userInput)
+        const updateSearchTerm = userInput.split(' ').join('+');
+        this.props.setSearchTerm(updateSearchTerm);
     }
 
     // handle the sumbit of the search bar 
@@ -17,7 +18,7 @@ class Search extends Component {
         this.props.handleResults([]);
 
         const LookupIP = 'https://ipapi.co/json/';
-        const url1 = `https://jobs.github.com/positions.json?description=${this.props.searchTerm}&search=node`
+        const url1 = `https://jobs.github.com/positions.json?description=${this.props.searchTerm}`
         const url2 = `https://authenticjobs.com/api/?api_key=e2da8aacbfce53f1e1b9559409a51691&format=json&method=aj.jobs.search&keywords=${this.props.searchTerm}`
 
         fetch(url1)
@@ -149,21 +150,27 @@ class Search extends Component {
 
     render() {
         return (
-            <div>
-                <h1 className="text-bar">Find  available jobs on ..</h1>
-                <h2 className="text-bar2">github , authenticjobs and indeed</h2>
-                <div className="search-container">
-                    <form className="search-form" onSubmit={this.handleSumbit.bind(this)}>
-                        <input className="search-bar" type="text" placeholder="Search For Job" onChange={this.handleChange.bind(this)} />
-                        <button className="button-search"><img src="https://i.imgur.com/WX7bym4.png" alt="search" /></button>
-                        <img className="img" src="https://slack-imgs.com/?c=1&url=https%3A%2F%2Fi.imgur.com%2F0ZaePDc.jpg" alt="" />
-                    </form>
-                    {this.props.selectedJob === null ? this.renderResults() : this.renderJobDetails()}
-                </div>
-            </div>
-
+            <div className="search">
+                <h1>Find  available jobs on ..</h1>
+                <h2 >github , authenticjobs and indeed</h2>
+           
+                <form onSubmit={this.handleSumbit.bind(this)}>
+                    <div className="input-group mb-3">
+                        <input type="text" className="form-control" placeholder="Search For Job" aria-label="Recipient's username" aria-describedby="basic-addon2"  onChange={this.handleChange.bind(this)} />
+                        <div className="input-group-append">
+                            <button className="btn btn-outline-secondary" type="button">search</button>         
+                        </div>
+                    </div>
+                </form>
+            {this.props.selectedJob === null ? this.renderResults() : this.renderJobDetails()}
+            </div>      
         )
     }
 }
+
+
+
+
+
 
 export default Search;

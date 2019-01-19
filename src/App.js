@@ -241,7 +241,10 @@ class App extends Component {
   }
 
   renderUserForm() {
-    return <UserForm userInfo={this.state.userInfo} handleFormSubmit={this.handleFormSubmit.bind(this)} handleRegister={this.handleRegister.bind(this)} />
+    return <UserForm userInfo={this.state.userInfo} 
+                     handleFormSubmit={this.handleFormSubmit.bind(this)} 
+                     handleRegister={this.handleRegister.bind(this)} 
+                     />
   }
 
   renderUserProfile(){
@@ -277,19 +280,22 @@ class App extends Component {
       </div>
       )
     } else {
-      return( <div className="login"> 
-          <p  >Already have an account?</p>
-          <span className="h6text" >or</span>
-          <p className=" rigister"  onClick={() => this.handleRegister()}>Register</p>
-          <p className="login-buton" onClick={() => this.setLoginForm()}>Login</p>
+      return( <div className="d-inline-flex p-2  nav-info"> 
+          <p>Already have an account?</p>
+          <p onClick={() => this.handleRegister()}>Register</p>
+          <span>or</span>
+          <p onClick={() => this.setLoginForm()}>Login</p>
       </div>)
     }
   }
 
   render() {
     return (
-      <div className="">
-        {this.renderNavButton()}
+      <div className="app">
+          <nav className="navbar navbar-light ">
+              <img className="d-inline-block align-top"  width="200" height="250" src="https://slack-imgs.com/?c=1&url=https%3A%2F%2Fi.imgur.com%2F0ZaePDc.jpg" alt="" />
+              {this.renderNavButton()}
+          </nav>
         {this.state.loginForm ? this.renderLoginForm() : ''}
         {this.state.userForm ? this.renderUserForm() : ''}
         {this.state.showProfile ? this.renderUserProfile() : 
