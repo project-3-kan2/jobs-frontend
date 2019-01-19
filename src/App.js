@@ -228,7 +228,7 @@ class App extends Component {
   }
 
   handleResults(dataResult) {
-    console.log("%%%%%%%%%%%%%%%%%%Results", dataResult)
+    console.log("%%%%%%%%%%%%%%%%%Results", dataResult)
     this.setState({
       results: dataResult
     })
