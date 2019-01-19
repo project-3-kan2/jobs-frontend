@@ -1,121 +1,108 @@
-
-
-
 .cursor {
-    cursor: pointer;
+	cursor: pointer;
 }
 
 .nav-bar {
-    display: flex;
-    justify-content: space-around
+	display: flex;
+	justify-content: space-around;
 }
-
 
 body {
-
-    height: 100vh;
-    width: 100vw;
-    position: absolute;
-    background: #B0C4DE;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-
+	height: 100vh;
+	width: 100vw;
+	position: absolute;
+	background: #b0c4de;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
 }
-
 
 /* this for search result page to display (search-resualt,logo,content) company logo and job title and location */
 .search-resualt {
-    display: flex;
-    flex-direction: row;
-
+	display: flex;
+	flex-direction: row;
 }
-.res-cont{
-    display: flex;
-
+.res-cont {
+	display: flex;
 }
 
 .job-result {
-    display: flex;
-    flex-direction: column;
-    width: 50%;
-    margin: 0 auto;
-    text-align: center;
-    /* padding: 80px; */
-    margin-top: 60vh;
-    font-size: 40px;
-    border-radius: 8px;
-    background: #697499;
+	display: flex;
+	flex-direction: column;
+	width: 50%;
+	margin: 0 auto;
+	text-align: center;
+	/* padding: 80px; */
+	margin-top: 60vh;
+	font-size: 40px;
+	border-radius: 8px;
+	background: #697499;
 }
 
 .job-info {
-    /* position: absolute; */
-    /* width: 677px;
+	/* position: absolute; */
+	/* width: 677px;
         height: 64px;
         left: 252px;
         top: -30px; */
 
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: 300;
-    line-height: normal;
-    font-size: 30px;
-    text-align: center;
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 300;
+	line-height: normal;
+	font-size: 30px;
+	text-align: center;
 
-    color: #FFFDFD;
-
-
+	color: #fffdfd;
 }
 
 .savebutton {
-    /* position: absolute; */
-    width: 700px;
-    height: 40px;
-    /* left: 2px; */
-    /* top: 360px; */
-    font-size: 30px;
-    background: #FFFDFD;
-    border: 1px solid #FFFFFF;
-    box-sizing: border-box;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 8px;
+	/* position: absolute; */
+	width: 700px;
+	height: 40px;
+	/* left: 2px; */
+	/* top: 360px; */
+	font-size: 30px;
+	background: #fffdfd;
+	border: 1px solid #ffffff;
+	box-sizing: border-box;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	border-radius: 8px;
 }
 
 .job-location {
-    /* position: absolute;
+	/* position: absolute;
 width: 277px;
 height: 164px; */
-    left: 222px;
-    top: 100px;
+	left: 222px;
+	top: 100px;
 
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: 300;
-    line-height: normal;
-    font-size: 28px;
-    text-align: center;
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 300;
+	line-height: normal;
+	font-size: 28px;
+	text-align: center;
 
-    color: #21273D;
+	color: #21273d;
 }
 
 .job-title {
-    /* position: absolute;
+	/* position: absolute;
 width: 277px;
 height: 164px; */
-    left: 282px;
-    top: 150px;
+	left: 282px;
+	top: 150px;
 
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: 300;
-    line-height: normal;
-    font-size: 30px;
-    text-align: center;
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 300;
+	line-height: normal;
+	font-size: 30px;
+	text-align: center;
 
-    color: #21273D;
+	color: #21273d;
 }
-
-
 
 /* .content {
     flex: column;
@@ -123,197 +110,186 @@ height: 164px; */
     text-align: left
 } */
 
-
-
 .save-job {
-    text-align: right;
-    padding: 0px;
-    /* padding-top: 180px; */
+	text-align: right;
+	padding: 0px;
+	/* padding-top: 180px; */
 }
 
 .company-logo {
-    width: 225px;
-    height: 225px;
-    margin: 0px 800px 70px 100px;
-
+	width: 225px;
+	height: 225px;
+	margin: 0px 800px 70px 100px;
 }
 
 /* landpage "find a job " sentence */
 .text-bar {
-    position: absolute;
-    width: 900px;
-    height: 70px;
-    left: 500px;
-    top: 370px;
+	position: absolute;
+	width: 900px;
+	height: 70px;
+	left: 500px;
+	top: 370px;
 }
 
 /* landpage "github and authenticjobs " sentence */
 .text-bar2 {
-    position: absolute;
-    width: 700px;
-    height: 60px;
-    left: 500px;
-    top: 410px;
+	position: absolute;
+	width: 700px;
+	height: 60px;
+	left: 500px;
+	top: 410px;
 }
 
 .button-search {
-
-    position: absolute;
-    width: 0px;
-    height: 0px;
-    left: 1100px;
-    top: 430px;
-
+	position: absolute;
+	width: 0px;
+	height: 0px;
+	left: 1100px;
+	top: 430px;
 }
 
 /* logo img  */
 .img {
-    position: absolute;
-    width: 220px;
-    height: 320px;
-    left: -20px;
-    top: 0px;
-    margin: 0;
-
+	position: absolute;
+	width: 220px;
+	height: 320px;
+	left: -20px;
+	top: 0px;
+	margin: 0;
 }
 
 /* search bar postion */
 .search-bar {
-    position: absolute;
-    width: 700px;
-    height: 60px;
-    left: 400px;
+	position: absolute;
+	width: 700px;
+	height: 60px;
+	left: 400px;
 
-    top: 470px;
-    background: #FFFFFF;
+	top: 470px;
+	background: #ffffff;
 
-
-    font-size: 30px;
+	font-size: 30px;
 }
 
-
-
 .home-text {
-    position: absolute;
-    width: 1493px;
-    height: 135px;
-    left: 0px;
-    top: 313px;
+	position: absolute;
+	width: 1493px;
+	height: 135px;
+	left: 0px;
+	top: 313px;
 
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    font-size: 64px;
-    text-align: center;
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+	font-size: 64px;
+	text-align: center;
 
-    color: #000000;
+	color: #000000;
 }
 
 .login {
-    position: absolute;
-    width: 995px;
-    height: 103px;
-    left: 200px;
-    top: 39px;
+	position: absolute;
+	width: 995px;
+	height: 103px;
+	left: 200px;
+	top: 39px;
 
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    font-size: 40px;
-    text-align: center;
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+	font-size: 40px;
+	text-align: center;
 
-    color: #FFFFFF;
+	color: #ffffff;
 }
 
 /* postion "login" word in landpage */
 .login-buton {
-    position: absolute;
-    width: 271px;
-    height: 45px;
-    left: 640px;
-    top: 0px;
+	position: absolute;
+	width: 271px;
+	height: 45px;
+	left: 640px;
+	top: 0px;
 
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    font-size: 40px;
-    text-align: center;
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+	font-size: 40px;
+	text-align: center;
 
-    color: #21273D;
+	color: #21273d;
 }
 
 /* make login form in center and change font , size  */
 .login-form {
-    position: fixed;
-    margin: 140px 500px 100px 0;
-    right: 15px;
-    padding: 10px;
-    z-index: 9;
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: 300;
-    line-height: normal;
-    font-size: 30px;
+	position: fixed;
+	margin: 140px 500px 100px 0;
+	right: 15px;
+	padding: 10px;
+	z-index: 9;
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 300;
+	line-height: normal;
+	font-size: 30px;
 }
 
 .login-form > button {
-    font-family: Roboto;
-    font-style: normal;
-    line-height: normal;
-    width: 70px;
-    height: 40px;
-    font-size: 20px;
-    background-color: #21273D;
-    color: white;
-    text-align: center;
-    border-style: none;
-
-
+	font-family: Roboto;
+	font-style: normal;
+	line-height: normal;
+	width: 70px;
+	height: 40px;
+	font-size: 20px;
+	background-color: #21273d;
+	color: white;
+	text-align: center;
+	border-style: none;
 }
 
-.login-form>input {
-    font-family: Roboto;
-    width: 190px;
-    height: 30px;
-    font-size: 20px;
+.login-form > input {
+	font-family: Roboto;
+	width: 190px;
+	height: 30px;
+	font-size: 20px;
 }
 
 /* postion "or" word in landpage */
 .h6text {
-    position: absolute;
-    width: 271px;
-    height: 45px;
-    left: 730px;
-    top: 40px;
+	position: absolute;
+	width: 271px;
+	height: 45px;
+	left: 730px;
+	top: 40px;
 
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    font-size: 40px;
-    text-align: center;
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+	font-size: 40px;
+	text-align: center;
 
-    color: white;
+	color: white;
 }
 
 .rigister {
-    position: absolute;
-    width: 271px;
-    height: 45px;
-    left: 830px;
-    top: 0px;
+	position: absolute;
+	width: 271px;
+	height: 45px;
+	left: 830px;
+	top: 0px;
 
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    font-size: 40px;
-    text-align: center;
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+	font-size: 40px;
+	text-align: center;
 
-    color: #21273D;
+	color: #21273d;
 }
 
 /* postion logout  */
@@ -333,143 +309,134 @@ height: 164px; */
 }
 
 .cursor-username {
-    position: absolute;
-    width: 271px;
-    height: 45px;
-    left: 880px;
-    top: 0px;
+	position: absolute;
+	width: 271px;
+	height: 45px;
+	left: 880px;
+	top: 0px;
 
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    font-size: 40px;
-    text-align: center;
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+	font-size: 40px;
+	text-align: center;
 }
-
-
 
 /* added a pop up sing up page */
 .registertion {
-    z-index: 10;
-    text-align: center;
-    position: absolute;
-    left: 20%;
-    top: 20%;
-    height: 43%;
-    width: 25%;
-    background-color: #697499;
-
+	z-index: 10;
+	text-align: center;
+	position: absolute;
+	left: 20%;
+	top: 20%;
+	height: 43%;
+	width: 25%;
+	background-color: #697499;
 }
 
-.login>h6 {
-    position: absolute;
-    width: 995px;
-    height: 103px;
-    left: 350px;
-    top: 0px;
+.login > h6 {
+	position: absolute;
+	width: 995px;
+	height: 103px;
+	left: 350px;
+	top: 0px;
 
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    font-size: 48px;
-    text-align: center;
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+	font-size: 48px;
+	text-align: center;
 
-    color: #FFFFFF;
+	color: #ffffff;
 }
 
 /* render profile info container , info , edit button */
 .show-profile {
-    position: absolute;
-    width: 1000px;
-    height: 199px;
-    left: 194px;
-    top: calc(50% - 199px/2 - 409px);
-    border: #697499 solid 1px;
+	position: absolute;
+	width: 1000px;
+	height: 199px;
+	left: 194px;
+	top: calc(50% - 199px/2 - 409px);
+	border: #697499 solid 1px;
 
-    background: #B0C4DE;
-    mix-blend-mode: normal;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	background: #b0c4de;
+	mix-blend-mode: normal;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
+.show-profile > h4 {
+	margin: 10px 20px;
+	padding: 20px;
+	float: left;
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 300;
+	line-height: normal;
+	font-size: 27px;
 
-.show-profile>h4 {
-    margin: 10px 20px;
-    padding: 20px;
-    float: left;
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: 300;
-    line-height: normal;
-    font-size: 27px;
-
-    color: #FFF9F9;
-
-
+	color: #fff9f9;
 }
 
-.show-profile>button {
-    margin: 140px 20px;
-    width: 100px;
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: 100;
-    line-height: normal;
-    font-size: 25px;
-    background-color: whitesmoke;
-
+.show-profile > button {
+	margin: 140px 20px;
+	width: 100px;
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 100;
+	line-height: normal;
+	font-size: 25px;
+	background-color: whitesmoke;
 }
 
 .job-details {
-    width: 50%;
-    margin: 0 auto;
-    text-align: center;
-    padding: 80px;
-    margin-top: 60vh;
-    font-size: 40px;
-    border-radius: 8px;
-    background: #697499;
+	width: 50%;
+	margin: 0 auto;
+	text-align: center;
+	padding: 80px;
+	margin-top: 60vh;
+	font-size: 40px;
+	border-radius: 8px;
+	background: #697499;
 }
 
-.job-details> button {
-   width:100%;
-   height: 40px;
-    background: #FFFDFD;
-    border: 1px solid #FFFFFF;
-    box-sizing: border-box;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    display: flex;
-    flex-direction: column-reverse;
-    border-radius: 8px;
+.job-details > button {
+	width: 100%;
+	height: 40px;
+	background: #fffdfd;
+	border: 1px solid #ffffff;
+	box-sizing: border-box;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	display: flex;
+	flex-direction: column-reverse;
+	border-radius: 8px;
 }
 
-.job-details> img {
-    width: 225px;
-    height: 225px;
-    margin: 0px 100px 0 50px;
+.job-details > img {
+	width: 225px;
+	height: 225px;
+	margin: 0px 100px 0 50px;
 }
 .job-details > h2 {
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: 300;
-    line-height: normal;
-    font-size: 30px;
-    text-align: center;
-    color: #FFFDFD;
-
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 300;
+	line-height: normal;
+	font-size: 30px;
+	text-align: center;
+	color: #fffdfd;
 }
 .job-details > h4 {
-    float: left;
-    color: #21273D;
-    font-family: Roboto;
-    font-size: 20px;
-    top:77px
-
+	float: left;
+	color: #21273d;
+	font-family: Roboto;
+	font-size: 20px;
+	top: 77px;
 }
 .job-details > p {
-    color: #21273D;
-    font-family: Roboto;
-    font-size: 20px;
-    top:300px
+	color: #21273d;
+	font-family: Roboto;
+	font-size: 20px;
+	top: 300px;
 }
