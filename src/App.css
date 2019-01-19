@@ -208,11 +208,7 @@ nav {
     }
     
     .cursor{
-    position: absolute;
-    width: 150px;
-    height: 50px;
-    left: 50px;
-    top: 230px;
+   
     
     font-family: Roboto;
     font-style: normal;
