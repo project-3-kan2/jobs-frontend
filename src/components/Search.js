@@ -154,20 +154,16 @@ class Search extends Component {
                 <h1>Find  available jobs on ..</h1>
                 <h2 >github , authenticjobs and indeed</h2>
            
-         <form onSubmit={this.handleSumbit.bind(this)}>
-                <div className="input-group mb-3">
-  <input type="text" className="form-control" placeholder="Search For Job" aria-label="Recipient's username" aria-describedby="basic-addon2"  onChange={this.handleChange.bind(this)} />
-  <div className="input-group-append">
-    <button className="btn btn-outline-secondary" type="button">search</button>
-    
-  </div>
-</div>
-</form>
-{this.props.selectedJob === null ? this.renderResults() : this.renderJobDetails()}
-</div>
-            
-
-           
+                <form onSubmit={this.handleSumbit.bind(this)}>
+                    <div className="input-group mb-3">
+                        <input type="text" className="form-control" placeholder="Search For Job" aria-label="Recipient's username" aria-describedby="basic-addon2"  onChange={this.handleChange.bind(this)} />
+                        <div className="input-group-append">
+                            <button className="btn btn-outline-secondary" type="button">search</button>         
+                        </div>
+                    </div>
+                </form>
+            {this.props.selectedJob === null ? this.renderResults() : this.renderJobDetails()}
+            </div>      
         )
     }
 }
