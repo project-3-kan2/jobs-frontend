@@ -149,21 +149,31 @@ class Search extends Component {
 
     render() {
         return (
-            <div>
-                <h1 className="text-bar">Find  available jobs on ..</h1>
-                <h2 className="text-bar2">github , authenticjobs and indeed</h2>
-                <div className="search-container">
-                    <form className="search-form" onSubmit={this.handleSumbit.bind(this)}>
-                        <input className="search-bar" type="text" placeholder="Search For Job" onChange={this.handleChange.bind(this)} />
-                        <button className="button-search"><img src="https://i.imgur.com/WX7bym4.png" alt="search" /></button>
-                        <img className="img" src="https://slack-imgs.com/?c=1&url=https%3A%2F%2Fi.imgur.com%2F0ZaePDc.jpg" alt="" />
-                    </form>
-                    {this.props.selectedJob === null ? this.renderResults() : this.renderJobDetails()}
-                </div>
-            </div>
+            <div className="search">
+                <h1>Find  available jobs on ..</h1>
+                <h2 >github , authenticjobs and indeed</h2>
+           
+         <form onSubmit={this.handleSumbit.bind(this)}>
+                <div className="input-group mb-3">
+  <input type="text" className="form-control" placeholder="Search For Job" aria-label="Recipient's username" aria-describedby="basic-addon2"  onChange={this.handleChange.bind(this)} />
+  <div className="input-group-append">
+    <button className="btn btn-outline-secondary" type="button">search</button>
+    
+  </div>
+</div>
+</form>
+{this.props.selectedJob === null ? this.renderResults() : this.renderJobDetails()}
+</div>
+            
 
+           
         )
     }
 }
+
+
+
+
+
 
 export default Search;
