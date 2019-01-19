@@ -49,3 +49,21 @@ body {
     text-align: center;
 
 }
+
+.nav-info > p , span {
+    margin-right: 20px ;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    font-size: 30px;
+}
+nav {
+    background-color: #B0C4DE !important;
+}
+.search{
+    margin:200px 40px 0 40px;
+    font-family: Roboto;
+    text-align: center; 
+   
+}
