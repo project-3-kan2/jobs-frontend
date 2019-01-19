@@ -13,8 +13,9 @@
 
 body {
 
-    width: 1500px;
-    height: 1660px;
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
     background: #B0C4DE;
     background-position: center;
     background-repeat: no-repeat;
@@ -29,9 +30,14 @@ body {
     flex-direction: row;
 
 }
+.res-cont{
+    display: flex;
 
+}
 
 .job-result {
+    display: flex;
+    flex-direction: column;
     width: 50%;
     margin: 0 auto;
     text-align: center;
@@ -253,7 +259,7 @@ height: 164px; */
     font-size: 30px;
 }
 
-.login-form>button {
+.login-form > button {
     font-family: Roboto;
     font-style: normal;
     line-height: normal;

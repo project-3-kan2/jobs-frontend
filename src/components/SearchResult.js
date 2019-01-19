@@ -3,7 +3,7 @@ import React from 'react';
 const SearchResult = (props) => {  
     
     return(
-        <div >
+        <div className="res-cont" >
         <div className="job-result">
             { props.showProfile ? <p className="cursor" onClick={() => props.removeSavedJob(props.job.id)}>X</p> : '' }
             <h2 className="job-info" onClick={() => props.setSelectedJob(props.job)}>{props.job.title}</h2>
