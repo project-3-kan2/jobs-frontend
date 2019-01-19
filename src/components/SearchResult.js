@@ -1,5 +1,6 @@
 import React from 'react';
 
+//This functional component will render the result state in this format
 const SearchResult = (props) => {  
     
     return(
@@ -10,12 +11,12 @@ const SearchResult = (props) => {
             <p className="job-title"> {props.job.company_name}</p>
             <p className="job-location"> {props.job.job_location}</p>
             <img className="company-logo" src={props.job.company_logo} alt={props.job.company_name} />
-            {props.showProfile ? <button onClick={() => window.open(`${props.job.job_url}`, "_blank")}>Apply</button> :
-                                 <button className="savebutton" onClick={() => props.handleSaveJob(props.job)}>Save Job</button>}
+            { props.showProfile ? <button onClick={() => window.open(`${props.job.job_url}`, "_blank")}>Apply</button> :
+                                 <button className="savebutton" onClick={() => props.handleSaveJob(props.job)}>Save Job</button>
+                                 }
         </div>  
     </div>
     )
 }
 
 export default SearchResult;
-

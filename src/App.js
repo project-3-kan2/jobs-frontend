@@ -55,7 +55,6 @@ class App extends Component {
     fetch(`${API_URL}user/${this.state.username}`)
       .then(response => response.json())
       .then(data => {
-        console.log('YYYYY',data);
         this.setState({
           userInfo: data,
           loginForm: false
@@ -76,8 +75,6 @@ class App extends Component {
       this.setState({
         userSavedJob: data
       })
-      console.log('$$$$$$$$$$$$$$$$TTTTTTTTTTTTTTT', this.state.userSavedJob)
-
     })
     .catch(error => {
       console.log('App.js handleUserSavedJob function: ', error);
@@ -127,7 +124,7 @@ class App extends Component {
     } else {
       return <JobDetails userInfo={this.state.userInfo} 
                          selectedJob={this.state.selectedJob} 
-                        //  handleSaveJob={this.state.handleSaveJob.bind(this)}
+                         handleSaveJob={this.handleSaveJob.bind(this)}
                          />
     }
   }
@@ -147,13 +144,7 @@ class App extends Component {
     })
       .then(response => response.json())
       .then(data => {
-        console.log('DATA')
-        console.log(data);
         const index = this.state.results.indexOf(savedJob);
-        console.log("index", index);
-        // const {results} = this.state; 
-        // results.slice(index, 1); 
-        // console.log('## RRR', results.slice(index, 1))
         const updatedResult = this.state.results.filter((el, i) => i !== index)
         this.setState({ 
           results: updatedResult,
@@ -209,6 +200,10 @@ class App extends Component {
           userForm: false
          })
       })
+      .catch(error => {
+        console.log('createNewUser Error: ', error)
+        alert("Tnis username or email is Registerd.");
+      })
   }
 
   //This function will render the log-in form it the login is true
@@ -246,6 +241,7 @@ class App extends Component {
     return <UserProfile user={this.state.userInfo} 
                         handleRegister={this.handleRegister.bind(this)} 
                         renderSavedJob={this.renderSavedJob.bind(this)}
+                        setUserProfile={this.setUserProfile.bind(this)}
                         />
   }
 
@@ -262,7 +258,7 @@ class App extends Component {
   }
 
   setUserProfile() {
-    this.setState({ showProfile: true})
+    this.setState({ showProfile: !this.state.showProfile})
     this.handleUserSavedJob(this.state.userInfo);
   }
 
