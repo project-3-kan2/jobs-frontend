@@ -216,8 +216,9 @@ class App extends Component {
   //This function will render the log-in form it the login is true
   renderLoginForm() {
     return (
-      <div>
-        <form className="login-form" onSubmit={this.handleSubmit.bind(this)}>
+      <div className="user-form">
+        <form className="show-form" onSubmit={this.handleSubmit.bind(this)}>
+          <div className="close-modal" onClick={ () => this.setLoginForm() }>x</div>
           <label>Username: </label>
           <input type="text" placeholder="Enter username" onChange={this.handleChange.bind(this)} />
           <button>Login</button>
@@ -297,7 +298,11 @@ class App extends Component {
               {this.renderNavButton()}
           </nav>
         {this.state.loginForm ? this.renderLoginForm() : ''}
+<div>
         {this.state.userForm ? this.renderUserForm() : ''}
+
+</div>
+
         {this.state.showProfile ? this.renderUserProfile() : 
                                   <Search handleSaveJob={this.handleSaveJob.bind(this)} 
                                           handleResults={this.handleResults.bind(this)} 
