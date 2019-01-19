@@ -132,6 +132,8 @@ class App extends Component {
       return <JobDetails userInfo={this.state.userInfo} 
                          selectedJob={this.state.selectedJob} 
                          handleSaveJob={this.handleSaveJob.bind(this)}
+                         showProfile={this.state.showProfile}
+                         setSelectedJob={this.setSelectedJob.bind(this)}
                          />
     }
   }
@@ -253,6 +255,7 @@ class App extends Component {
                         handleRegister={this.handleRegister.bind(this)} 
                         renderSavedJob={this.renderSavedJob.bind(this)}
                         setUserProfile={this.setUserProfile.bind(this)}
+                        setSelectedJob={this.setSelectedJob.bind(this)}
                         />
   }
 
@@ -298,11 +301,7 @@ class App extends Component {
               {this.renderNavButton()}
           </nav>
         {this.state.loginForm ? this.renderLoginForm() : ''}
-<div>
         {this.state.userForm ? this.renderUserForm() : ''}
-
-</div>
-
         {this.state.showProfile ? this.renderUserProfile() : 
                                   <Search handleSaveJob={this.handleSaveJob.bind(this)} 
                                           handleResults={this.handleResults.bind(this)} 
