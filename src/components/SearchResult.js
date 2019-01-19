@@ -7,7 +7,6 @@ const SearchResult = (props) => {
         <div className="media">
             <div className="card-body">
                 <div className="row">
-
                     <div className="col-sm">
                         <h5 onClick={() => props.setSelectedJob(props.job)}>{props.job.title} </h5>
                         {props.showProfile ? <p onClick={() => props.removeSavedJob(props.job.id)}>X</p> : ''}
@@ -21,7 +20,7 @@ const SearchResult = (props) => {
                     </div>
 
                     {props.showProfile ? <button className="btn btn-secondary btn-lg " onClick={() => window.open(`${props.job.job_url}`, "_blank")}>Apply</button> :
-                        <button className="btn btn-secondary btn-lg btn-block" onClick={() => props.handleSaveJob(props.job)}>Save Job</button>}
+                        <button className="btn btn-secondary btn-lg " onClick={() => props.handleSaveJob(props.job)}>Save Job</button>}
                 </div>
             </div>
         </div>
