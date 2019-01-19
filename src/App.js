@@ -5,6 +5,7 @@ import UserForm from './components/UserForm';
 import UserProfile from './components/UserProfile';
 import SearchResult from './components/SearchResult';
 import JobDetails from './components/JobDetails';
+import swal from '../node_modules/sweetalert';
 
 const API_URL = 'http://localhost:3000/';
 
@@ -62,7 +63,7 @@ class App extends Component {
       })
       .catch(error => {
         console.log('App.js handleSubmit function: ', error);
-        alert("This username NOT Register");
+        swal("This username NOT Registered");
       })
     console.log(this.state.userInfo);
   }
@@ -78,7 +79,7 @@ class App extends Component {
     })
     .catch(error => {
       console.log('App.js handleUserSavedJob function: ', error);
-      alert("register plz");
+      swal("register plz");
     })
   }
 
@@ -104,7 +105,7 @@ class App extends Component {
 
   handleSaveJob(job) {
     if (this.state.userInfo === undefined) {
-      alert("Plase Login or Register to save and apply to job")
+      swal("Plase Login or Register to save and apply to job")
     } else {
       this.insertSavedJob(job)
     }
@@ -202,7 +203,7 @@ class App extends Component {
       })
       .catch(error => {
         console.log('createNewUser Error: ', error)
-        alert("Tnis username or email is Registerd.");
+        swal("Tnis username or email is Registerd.");
       })
   }
 
@@ -267,7 +268,8 @@ class App extends Component {
       return(<div>
         <p className="cursor-username" onClick={() => this.setUserProfile()}>{this.state.userInfo.username}</p>
         <p className="cursor-logout" onClick={() => this.handleLogout()}>Logout</p>
-      </div>)
+      </div>
+      )
     } else {
       return( <div className="login"> 
           <p  >Already have an account?</p>
