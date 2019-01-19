@@ -124,7 +124,7 @@ class App extends Component {
     } else {
       return <JobDetails userInfo={this.state.userInfo} 
                          selectedJob={this.state.selectedJob} 
-                        //  handleSaveJob={this.state.handleSaveJob.bind(this)}
+                         handleSaveJob={this.handleSaveJob.bind(this)}
                          />
     }
   }

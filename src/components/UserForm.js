@@ -13,6 +13,7 @@ class UserForm extends Component {
     }
   }
 
+  //Handle input change depends on the name of the input tag
   handleChange(event) {
     const currentInput = event.target.name;
     const newValue = event.target.value;
@@ -22,6 +23,7 @@ class UserForm extends Component {
     })
   }
 
+  //Handle Register and edit submission
   handleSubmit(event) {
     event.preventDefault();
     this.props.handleFormSubmit(this.state)

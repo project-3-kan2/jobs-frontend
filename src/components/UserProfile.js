@@ -9,8 +9,7 @@ const UserProfile = (props) => {
               <h4>Last Name: {props.user.lastname}</h4>
               <h4>Email: {props.user.email}</h4>
               <h4>Phone: {props.user.phone}</h4>
-
-             <button onClick={() => props.handleRegister()}>Edit</button>
+              <button onClick={() => props.handleRegister()}>Edit</button>
           </div>
           <div>    
               <div>
