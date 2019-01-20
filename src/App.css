@@ -53,6 +53,11 @@ body {
     font-size: 30px;
 }
 
+.log-button {
+    color: #FFF9F9;
+    cursor: pointer;
+}
+
 nav {
     background-color: #B0C4DE !important;
 }
@@ -63,13 +68,22 @@ nav {
     text-align: center; 
 }
 
+.search-bar {
+    width: 60% !important;
+    margin: 0 auto;
+}
+
+.search-button {
+    margin-left: 5px;
+}
+
 .user-form{
-    position: relative;
+    position: fixed !important;
     width: 100vw;
     height: 100vh;
     top: 0;
     left: 0;
-    background-color: rgba(0,0,0,.5);
+    background-color: rgba(0, 0, 0, 0.185);
     display: flex;
     justify-content: center;
     align-items: center;
