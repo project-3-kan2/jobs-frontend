@@ -25,18 +25,21 @@ class App extends Component {
     }
   }
 
+  // Set the search term in the state
   setSearchTerm(term) {
     this.setState({
       searchTerm: term
     })
   }
 
+  // set the selected job to show the job details component
   setSelectedJob(job) {
     this.setState({
       selectedJob: job
-  })
+    })
   }
 
+  // show the login form to show
   setLoginForm() {
     this.setState({
       loginForm: !this.state.loginForm,
@@ -50,6 +53,7 @@ class App extends Component {
     })
   }
 
+  // handle the user name to check if he is registered or no 
   handleSubmit(event) {
     event.preventDefault();
 
@@ -71,6 +75,7 @@ class App extends Component {
     console.log(this.state.userInfo);
   }
 
+  //render the user saved job 
   handleUserSavedJob(user) {
 
     fetch(`${API_URL}job/${user.id}`)
@@ -86,6 +91,7 @@ class App extends Component {
     })
   }
 
+  // remove the saved job from user saved job
   removeSavedJob(userSavedJobId) {
 
     const url = `${API_URL}job/${userSavedJobId}`
@@ -106,6 +112,7 @@ class App extends Component {
       })
   }
 
+  // chech if the user name logh in or not to save the job
   handleSaveJob(job) {
     if (this.state.userInfo === undefined) {
       swal({
@@ -117,6 +124,7 @@ class App extends Component {
     }
   }
 
+  // render the saved job and if there is selected job render the show details
   renderSavedJob() {
     if(this.state.selectedJob === null) {
       return this.state.userSavedJob.map((job, index) => {
@@ -132,6 +140,8 @@ class App extends Component {
       return <JobDetails userInfo={this.state.userInfo} 
                          selectedJob={this.state.selectedJob} 
                          handleSaveJob={this.handleSaveJob.bind(this)}
+                         showProfile={this.state.showProfile}
+                         setSelectedJob={this.setSelectedJob.bind(this)}
                          />
     }
   }
@@ -163,10 +173,12 @@ class App extends Component {
       })
   }
 
+  //handel thre form sumbmission if the user to create a new user or updtae user info
   handleFormSubmit(user) {
     this.state.userInfo ? this.updateUserInfo(user) : this.createNewUser(user)
   }
 
+  // update user information in the database 
   updateUserInfo(user) {
     console.log("##", user);
     const url = `${API_URL}user/${user.id}`
@@ -190,6 +202,7 @@ class App extends Component {
       })
   }
 
+  // create new user and inset this user to data base
   createNewUser(user) {
     const url = `${API_URL}user`
 
@@ -227,6 +240,7 @@ class App extends Component {
     )
   }
 
+  // handle all the api result in one state array
   handleResults(dataResult) {
     console.log("%%%%%%%%%%%%%%%%%Results", dataResult)
     this.setState({
@@ -241,6 +255,7 @@ class App extends Component {
     });
   }
 
+  // render user form for the registeration
   renderUserForm() {
     return <UserForm userInfo={this.state.userInfo} 
                      handleFormSubmit={this.handleFormSubmit.bind(this)} 
@@ -248,14 +263,17 @@ class App extends Component {
                      />
   }
 
+  // render the user profile component
   renderUserProfile(){
     return <UserProfile user={this.state.userInfo} 
                         handleRegister={this.handleRegister.bind(this)} 
                         renderSavedJob={this.renderSavedJob.bind(this)}
                         setUserProfile={this.setUserProfile.bind(this)}
+                        setSelectedJob={this.setSelectedJob.bind(this)}
                         />
   }
 
+  // claer the state for log out
   handleLogout() {
     this.setState({
       username: '',
@@ -268,11 +286,13 @@ class App extends Component {
     })
   }
 
+  // set state to show the user profile
   setUserProfile() {
     this.setState({ showProfile: !this.state.showProfile})
     this.handleUserSavedJob(this.state.userInfo);
   }
 
+  // render the navigation bar 
   renderNavButton() {
     if(this.state.userInfo) {
       return(<div>
@@ -281,11 +301,11 @@ class App extends Component {
       </div>
       )
     } else {
-      return( <div className="d-inline-flex p-2  nav-info"> 
-          <p>Already have an account?</p>
-          <p onClick={() => this.handleRegister()}>Register</p>
+      return( <div className="d-inline-flex p-2 nav-info"> 
+          <p>Already have an account</p>
+          <p className="log-button" onClick={() => this.setLoginForm()}>Login</p>
           <span>or</span>
-          <p onClick={() => this.setLoginForm()}>Login</p>
+          <p className="log-button" onClick={() => this.handleRegister()}>Register</p>
       </div>)
     }
   }
@@ -298,11 +318,7 @@ class App extends Component {
               {this.renderNavButton()}
           </nav>
         {this.state.loginForm ? this.renderLoginForm() : ''}
-<div>
         {this.state.userForm ? this.renderUserForm() : ''}
-
-</div>
-
         {this.state.showProfile ? this.renderUserProfile() : 
                                   <Search handleSaveJob={this.handleSaveJob.bind(this)} 
                                           handleResults={this.handleResults.bind(this)} 

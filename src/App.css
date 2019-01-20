@@ -53,6 +53,11 @@ body {
     font-size: 30px;
 }
 
+.log-button {
+    color: #FFF9F9;
+    cursor: pointer;
+}
+
 nav {
     background-color: #B0C4DE !important;
 }
@@ -63,13 +68,22 @@ nav {
     text-align: center; 
 }
 
+.search-bar {
+    width: 60% !important;
+    margin: 0 auto;
+}
+
+.search-button {
+    margin-left: 5px;
+}
+
 .user-form{
-    position: relative;
+    position: fixed !important;
     width: 100vw;
     height: 100vh;
     top: 0;
     left: 0;
-    background-color: rgba(0,0,0,.5);
+    background-color: rgba(0, 0, 0, 0.185);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -111,50 +125,44 @@ nav {
     width: 394px;
     height: 69px;
     left: 104px;
-    top: 3px;
-    
+    top: 3px;   
     font-family: Roboto;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
     font-size: 36px;
-    text-align: center;
-    
-    color: #FFF9F9;
-    
+    text-align: center;  
+    color: #FFF9F9; 
     }
+
     .firstname{
-        position: absolute;
+    position: absolute;
     width: 394px;
     height: 69px;
     left: 385px;
     top: 3px;
-    
     font-family: Roboto;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
     font-size: 36px;
     text-align: center;
-    
     color: #FFF9F9;
     }
+
     .lastname{
     position: absolute;
     width: 394px;
     height: 69px;
     left: 661px;
     top: 0px;
-    
     font-family: Roboto;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
     font-size: 36px;
     text-align: center;
-    
     color: #FFF9F9;
-    
     }
     
     .email{
@@ -162,31 +170,28 @@ nav {
     width: 394px;
     height: 69px;
     left: 104px;
-    top: 104px;
-    
+    top: 104px; 
     font-family: Roboto;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
     font-size: 36px;
     text-align: center;
-    
     color: #FFF9F9;
     }
+
     .phone{
     position: absolute;
     width: 394px;
     height: 69px;
     left: 390px;
     top: 104px;
-    
     font-family: Roboto;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
     font-size: 36px;
     text-align: center;
-    
     color: #FFF9F9;
     }
     
@@ -196,20 +201,16 @@ nav {
     height: 50px;
     left: 750px;
     top: 104px;
-    
     font-family: Roboto;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
     font-size: 36px;
     text-align: center;
-    
     color: black;
     }
     
     .cursor{
-   
-    
     font-family: Roboto;
     font-style: normal;
     font-weight: 500;
