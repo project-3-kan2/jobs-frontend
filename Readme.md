@@ -17,7 +17,9 @@
 
 
 **WireFrame:** 
-![](https://i.imgur.com/26Y1FqN.png)
+![]([](https://i.imgur.com/fwpIY69.png))
+![](https://i.imgur.com/6qMRyQY.png))
+
 
 **Hurdles/Unsolved Problems:** We had issues with acquiring API keys from jobs sites. Of all the sites we applied, only one replied with valid key. We had to improvise.
 
