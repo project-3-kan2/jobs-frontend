@@ -15,7 +15,7 @@ body {
     margin-top: 22px;
     margin: 0 auto;
     margin-top: 22px;
-    width: 700px;
+    width: 1000px;
     display: flex;
     flex-direction: row
 }
@@ -29,7 +29,7 @@ body {
     width: 100px;
 }
 
-.media-body>button {
+.media-body >button {
     width: 100%;
     background-color: white;
     color: #21273D;
@@ -105,3 +105,128 @@ nav {
     cursor: pointer;
     font-size: 1.5em;
   }
+
+  .username{
+    position: absolute;
+    width: 394px;
+    height: 69px;
+    left: 104px;
+    top: 3px;
+    
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    font-size: 36px;
+    text-align: center;
+    
+    color: #FFF9F9;
+    
+    }
+    .firstname{
+        position: absolute;
+    width: 394px;
+    height: 69px;
+    left: 385px;
+    top: 3px;
+    
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    font-size: 36px;
+    text-align: center;
+    
+    color: #FFF9F9;
+    }
+    .lastname{
+    position: absolute;
+    width: 394px;
+    height: 69px;
+    left: 661px;
+    top: 0px;
+    
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    font-size: 36px;
+    text-align: center;
+    
+    color: #FFF9F9;
+    
+    }
+    
+    .email{
+    position: absolute;
+    width: 394px;
+    height: 69px;
+    left: 104px;
+    top: 104px;
+    
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    font-size: 36px;
+    text-align: center;
+    
+    color: #FFF9F9;
+    }
+    .phone{
+    position: absolute;
+    width: 394px;
+    height: 69px;
+    left: 390px;
+    top: 104px;
+    
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    font-size: 36px;
+    text-align: center;
+    
+    color: #FFF9F9;
+    }
+    
+    .edit{
+    position: absolute;
+    width: 150px;
+    height: 50px;
+    left: 750px;
+    top: 104px;
+    
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    font-size: 36px;
+    text-align: center;
+    
+    color: black;
+    }
+    
+    .cursor{
+   
+    
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    font-size: 36px;
+    text-align: center;
+    color: black;
+    }
+    
+    .row {
+        display: flex;
+        flex-direction: row;
+
+    }
+    .row > button{
+        display: flex;
+        background-color: white;
+        color: #21273D;
+        flex-direction: row;
+    }
