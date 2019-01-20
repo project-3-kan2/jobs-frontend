@@ -38,7 +38,7 @@ subsequently, the user can save the jobs he/she likes to their own profile. Thos
 
 ## WireFrame:
 ![]([](https://i.imgur.com/fwpIY69.png))
-![](https://i.imgur.com/6qMRyQY.png))
+![]([](https://i.imgur.com/6qMRyQY.png))
 
 
 ## Hurdles/Unsolved Problems:
