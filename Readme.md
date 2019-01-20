@@ -37,8 +37,8 @@ This Application is Job search page. it consumes serval API's and presents a uni
 subsequently, the user can save the jobs he/she likes to their own profile. Those saved jobs can deleted later if the user wishes.
 
 ## WireFrame:
-![]([](https://i.imgur.com/fwpIY69.png))
-![]([](https://i.imgur.com/6qMRyQY.png))
+![](https://i.imgur.com/fwpIY69.png)
+![](https://i.imgur.com/6qMRyQY.png)
 
 
 ## Hurdles/Unsolved Problems:
